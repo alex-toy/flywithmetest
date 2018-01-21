@@ -1,0 +1,103 @@
+body {
+background-color:blue;
+background-image:url(../images/IMG_0121.png);
+background-size: 1500px;
+}
+
+
+.encart
+{
+	border: 3px blue solid;
+	border-radius: 10px;
+	color: blue;
+	margin : 5px;
+	padding : 5px;
+	background-color: coral;
+}
+
+
+.bandeau_lateral
+{
+	min-height : 1000px;
+	margin : 5px;
+	padding : 5px;
+	color : blue;
+	
+}
+
+
+
+.titre_central
+{
+	height : 200px;
+	text-align : center;
+	padding : 10px;
+	color : blue;
+}
+.espace
+{
+	height : 300px;
+}
+
+
+.commentaire
+{
+	border: 3px blue solid;
+	border-radius: 10px;
+	color: blue;
+	margin : 5px;
+	padding : 5px;
+	background-color: coral;
+}
+
+
+ 
+/* Infobulle */
+ 
+#tooltip {
+    position:absolute;
+    z-index:9999;
+    
+    width:400px;
+    
+    color:red;
+    font-size:20px;
+    
+    
+    border: 3px blue solid;
+    border-radius: 10px;
+    background-color: black;
+    padding:10px;
+}
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+	
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/" module="Articles" action="index" />
+	
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-update-([0-9]+)\.html" module="Articles" action="update" vars="id" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-delete-([0-9]+)\.html" module="Articles" action="delete" vars="id" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-insert\.html" module="Articles" action="insert" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-list-comment-([0-9]+)\.html" module="Articles" action="listComment" vars="id" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-list-validated-comment-([0-9]+)\.html" module="Articles" action="listValidatedComment" vars="id" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-list-unvalidated-comment-([0-9]+)\.html" module="Articles" action="listUnvalidatedComment" vars="id" />
+		
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-([0-9]+)\.html" module="Articles" action="deleteComment" vars="id" />
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-validate-([0-9]+)\.html" module="Articles" action="validateComment" vars="id" />
+	
+	
+</routes>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

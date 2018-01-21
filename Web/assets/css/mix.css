@@ -1,0 +1,18 @@
+body {
+  padding-top: 10px;
+}
+[class*="col-"]{
+  border: 5px double blue;
+  border-radius: 2px;
+  line-height: 5px;
+  text-align: center;
+	padding: 5px;
+}
+
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

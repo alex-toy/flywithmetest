@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+  
+  
+	<route url="/~alexei/FlyWithMeOC2/Web/articles" module="Articles" action="liste_articles"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/allarticles" module="Articles" action="Liste_all_articles"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/articles-([0-9]+)\.html" module="Articles" action="showArticleById" vars="id"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/commentaire-([0-9]+)\.html" module="Articles" action="insertComment" vars="id_article" />
+	<route url="/~alexei/FlyWithMeOC2/Web/search" module="Articles" action="Search"/>
+	
+	
+</routes>
+
