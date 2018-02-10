@@ -17,7 +17,8 @@ class ArticlesController extends BackController
     $this->page->addVar('title', 'Gestion des articles');
  
     $manager = $this->managers->getManagerOf('Articles');
- 
+    
+    $this->page->addVar('NumberUnvalidatedComments', $manager->getNumberUnvalidatedComments());
     $this->page->addVar('listeArticles', $manager->getAllArticles());
     $this->page->addVar('nombreNews', $manager->count());
   }

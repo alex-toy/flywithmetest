@@ -35,8 +35,11 @@ foreach ($listeArticles as $art)
   		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-update-', $art['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/update.png" width="50" alt="Modifier" /></a></td>
   		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-delete-', $art['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/delete.png" width="50" alt="Supprimer" /></a></td>
   		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-list-comment-', $art['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
- 		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-list-unvalidated-comment-', $art['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Valider" /></a></td>
-
+ 		<td style="text-align:center"><a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/articles-list-unvalidated-comment-', $art['id'], '.html">' , $NumberUnvalidatedComments[$art['id']] , '</a></td>
+ 		
+ 		
+ 		
+ 		
   </tr>';
 }
 ?>
@@ -44,7 +47,7 @@ foreach ($listeArticles as $art)
 
 
 
-<p><a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/articles-insert.html">Créer un article</a></p>
+<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/articles-insert.html">Créer un article</a>
 
 
 
