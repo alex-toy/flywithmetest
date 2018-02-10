@@ -20,7 +20,6 @@ background-size: 1500px;
 
 .bandeau_lateral
 {
-	min-height : 1000px;
 	margin : 5px;
 	padding : 5px;
 	color : blue;
@@ -105,6 +104,20 @@ background-size: 1500px;
     width           : 100%;
     left            : 0;
 	
+}
+
+
+
+.titre_vol
+{
+	border: 3px blue solid;
+	border-radius: 10px;
+	color: blue;
+	margin : 5px;
+	padding : 5px;
+	background-color: #80FFFF;
+	box-shadow: 5px 5px 2px grey;
+	text-align : center;
 }
 
 

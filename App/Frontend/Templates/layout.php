@@ -97,9 +97,6 @@
 
 
 
-
-
-<script type="text/javascript" src="http://localhost/~alexei/FlyWithMeOC2/Web/process.js"></script>  
 <script src="http://localhost/~alexei/FlyWithMeOC2/Web/jquery.js"></script>
 <script src="http://localhost/~alexei/FlyWithMeOC2/Web/effect.js"></script>
 <script src="http://localhost/~alexei/FlyWithMeOC2/Web/tinymce/tinymce.min.js"></script>

@@ -1,5 +1,4 @@
 <?php
-
 foreach ($listeArticles as $articles)
 {
 ?>
@@ -9,8 +8,6 @@ foreach ($listeArticles as $articles)
   </section>
 <?php
 }
-
-
 
 
 

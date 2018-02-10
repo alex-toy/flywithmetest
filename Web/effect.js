@@ -11,3 +11,6 @@ for (i = 0; i < comments.length; i++) {
     	comments[i].style.backgroundColor = "white";
 	}
 }
+
+
+
