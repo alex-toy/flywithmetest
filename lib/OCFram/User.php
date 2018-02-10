@@ -46,15 +46,10 @@ class User
     $_SESSION['auth'] = $authenticated;
   }
   
-  public function UnAuthenticate($authenticated = false)
+  public function UnAuthenticate()
   {
-    echo 'UnAuthenticate<br>';
-    if (!is_bool($authenticated))
-    {
-      throw new \InvalidArgumentException('La valeur spécifiée à la méthode User::setAuthenticated() doit être un boolean');
-    }
- 
-    $_SESSION['auth'] = $authenticated;
+	//echo 'UnAuthenticate<br>';
+    $_SESSION['auth'] = false;
   }
  
   public function setFlash($value)

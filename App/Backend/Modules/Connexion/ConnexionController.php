@@ -15,8 +15,8 @@ class ConnexionController extends BackController
       $login = $request->postData('login');
       $password = $request->postData('password');
       
-      echo 'login : ' . $this->app->config()->get('login') . '<br>';
-      echo 'pass : ' . $this->app->config()->get('passw') . '<br>';
+      //echo 'login : ' . $this->app->config()->get('login') . '<br>';
+      //echo 'pass : ' . $this->app->config()->get('passw') . '<br>';
  
       if ($login == $this->app->config()->get('login') && $password == $this->app->config()->get('passw'))
       {

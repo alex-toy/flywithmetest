@@ -10,7 +10,19 @@
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-list-validated-comment-([0-9]+)\.html" module="Articles" action="listValidatedComment" vars="id" />
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-list-unvalidated-comment-([0-9]+)\.html" module="Articles" action="listUnvalidatedComment" vars="id" />
 		
-	<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-([0-9]+)\.html" module="Articles" action="deleteComment" vars="id" />
+	
+	
+	<!-- 
+<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-([0-9]+)\.html" module="Articles" action="deleteComment" vars="id" />
+ -->
+
+
+	
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-([0-9]+)-([0-9]+)\.html" module="Articles" action="deleteComment" vars="id,id_article" />
+
+
+
+
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/comment-validate-([0-9]+)\.html" module="Articles" action="validateComment" vars="id" />
 	
 	

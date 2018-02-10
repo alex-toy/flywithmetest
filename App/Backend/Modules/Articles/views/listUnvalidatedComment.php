@@ -1,3 +1,8 @@
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="encart col-sm-10">
+
+
 <?php
 if($nombreComments == 0)
 {
@@ -46,7 +51,8 @@ foreach ($listeComments as $comment)
 <p><a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/">Retourner à la liste des articles</a></p>
 
 
-
+</div>
+</div>
 
 
 

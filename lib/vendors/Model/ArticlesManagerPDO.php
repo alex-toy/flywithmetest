@@ -145,6 +145,8 @@ class ArticlesManagerPDO extends ArticlesManager
     
   }
   
+  
+  
   public function getListValidatedCommentById($id_article)
   {
     //echo 'getListCommentById : ' . $id_article . '<br>';
@@ -166,6 +168,8 @@ class ArticlesManagerPDO extends ArticlesManager
     
   }
   
+  
+  
   public function getUnvalidatedComments($id_article)
   {
     //echo 'getListCommentById : ' . $id_article . '<br>';
@@ -184,6 +188,28 @@ class ArticlesManagerPDO extends ArticlesManager
     $requete->closeCursor();
  
     return $list_comment;
+    
+  }
+  
+  
+  public function getNumberUnvalidatedComments($id_article)
+  {
+    //echo 'getNumberUnvalidatedComments : ' . $id_article . '<br>';
+    
+    $sql = 'SELECT COUNT() FROM comments WHERE id_article = :id_article AND validated = false;';
+    //echo $sql;
+
+    $requete = $this->dao->prepare($sql);
+    $requete->bindValue(':id_article', (int) $id_article, \PDO::PARAM_INT);
+    $requete->execute();
+ 
+    $NumberUnvalidatedComments = $requete->fetchAll();
+    //print_r($NumberUnvalidatedComments);
+       
+    
+    $requete->closeCursor();
+ 
+    return $NumberUnvalidatedComments;
     
   }
   

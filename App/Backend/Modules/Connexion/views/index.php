@@ -1,3 +1,14 @@
+
+
+
+
+
+<div class="row">
+  
+  <div class="col-sm-3"></div>
+  
+  <div class="encart col-sm-8">
+
 <h2>Connexion</h2>
  
 <form action="" method="post">
@@ -9,3 +20,10 @@
  
   <input type="submit" value="Connexion" />
 </form>
+ 
+</div>
+  
+  
+  
+  
+</div>

@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
   
-  
+  	<!-- module Articles -->
 	<route url="/~alexei/FlyWithMeOC2/Web/articles" module="Articles" action="liste_articles"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/allarticles" module="Articles" action="Liste_all_articles"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/articles-([0-9]+)\.html" module="Articles" action="showArticleById" vars="id"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/commentaire-([0-9]+)\.html" module="Articles" action="insertComment" vars="id_article" />
 	<route url="/~alexei/FlyWithMeOC2/Web/search" module="Articles" action="Search"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/WhoamI" module="Articles" action="WhoamI"/>
+	
+	
+	<!-- module Contact -->
+	<route url="/~alexei/FlyWithMeOC2/Web/Contact" module="Contact" action="Contact"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/Mail" module="Contact" action="Mail"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/Link" module="Contact" action="Link"/>
+
 	
 	
 </routes>
+
+
+
+
+
+
+
 

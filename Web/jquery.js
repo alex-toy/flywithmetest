@@ -51,6 +51,27 @@ $(document).ready(function(){
 		$(this).css("border-color" , "blue");
 		$(this).css("background-color" , "#80FFFF");
 	});
+	
+	
+	
+	
+	
+	$button_list_comment = $('.button');
+	
+	$button_list_comment.on('mouseenter', function(){
+		$(this).css("border-color" , "yellow");
+		$(this).css("background-color" , "red");
+	});
+
+	$button_list_comment.on('mouseleave', function(){
+
+		$(this).css("border-color" , "blue");
+		$(this).css("background-color" , "#80FFFF");
+	});
+	
+	
+	
+	
 
 });
 

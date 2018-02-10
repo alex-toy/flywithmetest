@@ -2,6 +2,8 @@
 <div class="col-sm-1"></div>
 <div class="encart col-sm-10">
 
+<p>dont l'ID est : <?= $id_article ?></p>
+
 
 <?php
 if($nombreComments == 0)
@@ -24,6 +26,7 @@ else if($nombreComments > 1)
 <h2 style="text-align:left">Il y a actuellement <?= $nombreComments ?> commentaires sur l'article <?= $title_article[0] ?>. En voici la liste :</h2>
 
 
+<p>dont l'ID est : <?= $id_article ?></p>
 
 
 <?php
@@ -44,11 +47,7 @@ foreach ($listeComments as $comment)
 	'<tr>
   		<td style="text-align:center">', $comment['auteur'], '</td>
   		<td style="text-align:center">', $comment['contenu'], '</td>
-  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-', $comment['id'],'-', $id_article ,'.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
-
-
-
-
+  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-', $comment['id'], '-' , $id_article'.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
 
 	</tr>';
 }
@@ -61,40 +60,6 @@ foreach ($listeComments as $comment)
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

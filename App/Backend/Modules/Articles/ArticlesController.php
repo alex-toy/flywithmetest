@@ -11,6 +11,21 @@ use \OCFram\FormHandler;
  
 class ArticlesController extends BackController
 {
+  public function executeIndex(HTTPRequest $request)
+  {
+    //echo 'ArticlesController->executeIndex<br>';
+    $this->page->addVar('title', 'Gestion des articles');
+ 
+    $manager = $this->managers->getManagerOf('Articles');
+ 
+    $this->page->addVar('listeArticles', $manager->getAllArticles());
+    $this->page->addVar('nombreNews', $manager->count());
+  }
+  
+  
+  
+  
+  
   public function executeDelete(HTTPRequest $request)
   {
     $newsId = $request->getData('id');
@@ -24,32 +39,37 @@ class ArticlesController extends BackController
   }
  
  
+ 
+ 
   public function executeDeleteComment(HTTPRequest $request)
   {
-    $this->managers->getManagerOf('Comments')->delete($request->getData('id'));
+        
+    $CommentId = $request->getData('id');
+    //echo $CommentId;
+    
+    $articleId = $request->getData('id_article');
+    echo $articleId;
+    
+    
+    $this->managers->getManagerOf('Comments')->delete($CommentId);
  
     $this->app->user()->setFlash('Le commentaire a bien été supprimé !');
  
-    $this->app->httpResponse()->redirect('.');
+    $redirection = 'http://localhost/~alexei/FlyWithMeOC2/Web/admin/articles-list-comment-' . $articleId . '.html';
+    //echo $redirection;
+
+    $this->app->httpResponse()->redirect($redirection);
+    
   }
  
- 
-  public function executeIndex(HTTPRequest $request)
-  {
-    $this->page->addVar('title', 'Gestion des articles');
- 
-    $manager = $this->managers->getManagerOf('Articles');
- 
-    $this->page->addVar('listeArticles', $manager->getAllArticles());
-    $this->page->addVar('nombreNews', $manager->count());
-  }
+
  
  
   public function executeInsert(HTTPRequest $request)
   {
     $this->processForm($request);
  
-    $this->page->addVar('title', 'Ajout d\'une news');
+    $this->page->addVar('title', 'Ajout d\'un article');
   }
  
  
@@ -179,13 +199,21 @@ class ArticlesController extends BackController
   public function executeListComment(HTTPRequest $request)
   {
     //echo 'executeListComment<br>';
-    $this->page->addVar('title', 'Gestion des commentaires');
+    $this->page->addVar('title', 'Liste des commentaires');
+    
+    $id_article = $request->getData('id');
+    //echo $id_article;
  
     $manager = $this->managers->getManagerOf('Articles');
- 
-    $this->page->addVar('listeComments', $manager->getListCommentById($request->getData('id')));
-    $this->page->addVar('nombreComments', $manager->getCountCommentById($request->getData('id')));
-    $this->page->addVar('title_article', $manager->getTitleById($request->getData('id')));
+
+    
+   	$this->page->addVar('listeComments', $manager->getListCommentById($id_article));
+    $this->page->addVar('nombreComments', $manager->getCountCommentById($id_article));
+    $this->page->addVar('title_article', $manager->getTitleById($id_article));
+    $this->page->addVar('id_article', $id_article);
+    
+    //echo 'fin executeListComment';
+
   }
   
   

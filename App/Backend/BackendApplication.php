@@ -14,11 +14,11 @@ class BackendApplication extends Application
  
   public function run()
   {
-    echo 'BackendApplication->run()<br>';
+    //echo 'BackendApplication->run()<br>';
     if ($this->user->isAuthenticated())
     {
       //echo 'user->isAuthenticated<br>';
-      //$this->user->UnAuthenticate()
+      // $this->user->UnAuthenticate();
       $controller = $this->getController();
     }
     else

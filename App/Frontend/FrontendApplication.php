@@ -15,6 +15,10 @@ class FrontendApplication extends Application
  
   public function run()
   { 
+    //echo 'FrontendApplication->run';
+    
+    $this->user->UnAuthenticate();
+    
     $controller = $this->getController();
     
     $controller->execute();

@@ -11,51 +11,48 @@ use \FormBuilder\CommentFormBuilder;
 use \FormBuilder\SearchFormBuilder;
 use \OCFram\FormHandler;
 
-//use \OCFram\Smarty.php;
  
 class ArticlesController extends BackController
 {
 
   public function executeListe_articles(HTTPRequest $request)
   {
-    echo 'articlesController->executeListe_articles <br>';
+    //echo 'articlesController->executeListe_articles <br>';
+    
+    
+    //titre de la page :
+    $this->page->addVar('title', 'accueil');
+    
     
     $nombreArticles = $this->app->config()->get('nombre_news');
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
     //echo 'nombreNews : ' . $nombreArticles . '<br>';
     //echo 'nombreCaracteres : ' . $nombreCaracteres . '<br>';
-    
-    //variable pour le titre du bandeau :
-    $this->page->addVar('title', 'accueil');
+
     
     // On récupère le manager des articles.
     //echo 'getManagerOf(Articles) : ';
     $manager = $this->managers->getManagerOf('Articles');
+ 	
+ 	
+ 	//Liste des premiers articles :
  	$listeArticles = $manager->getList(0, $nombreArticles);
     //echo 'listeArticles[0]->titre() : ' . $listeArticles[0]->titre() . '<br>';
-    
-    
-    // On ajoute la variable $listeArticles à la vue.
     $this->page->addVar('listeArticles', $listeArticles);
     
     
-    //Variable pour les titres :
-    $listeAllTitle = $manager->getAllTitle();
-    ob_start();
-      require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $listeAllTitle = ob_get_clean();
-    $this->page->addVar('listeAllTitle', $listeAllTitle);
-    
- 
-
-    
-    // On ajoute la variable $nombreArticles à la vue.
+    //bandeau lateral :
     $nombreArticles = $manager->count();
     //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
+    $listeAllTitle = $manager->getAllTitle();
+    ob_start();
+      require __DIR__ .'/views/bandeau_lateral_titre.php';
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
     
-    
-    
+ 
+
     // variable pour le titre et le carousel :
     ob_start();
       require __DIR__ .'/views/titre_global.html';
@@ -88,20 +85,20 @@ class ArticlesController extends BackController
     $this->page->addVar('listeArticles', $listeArticles);
     
     
-    //Variable pour les titres :
-    $listeAllTitle = $manager->getAllTitle();
-    //echo 'listeAllTitle[0]->titre() : ' . $listeAllTitle[0]['id'] . '<br>';
-    ob_start();
-      require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $listeAllTitle = ob_get_clean();
-    $this->page->addVar('listeAllTitle', $listeAllTitle);
- 
-
-    
-    // On ajoute la variable $nombreArticles à la vue.
+    //variable $nombreArticles :
     $nombreArticles = $manager->count();
     //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
+    
+    
+    
+
+    //Variable pour les titres :
+    $listeAllTitle = $manager->getAllTitle();
+    ob_start();
+      require __DIR__ .'/views/bandeau_lateral_titre.php';
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
     
   
   }
@@ -125,14 +122,16 @@ class ArticlesController extends BackController
     $this->page->addVar('validatedcomments', $this->managers->getManagerOf('Comments')->getValidatedComments($article->id()));
     
     
-    //Variable pour les titres :
+    //bandeau lateral :
     $manager = $this->managers->getManagerOf('Articles');
+    $nombreArticles = $manager->count();
+    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
-    //echo 'listeAllTitle[0]->titre() : ' . $listeAllTitle[0]['id'] . '<br>';
     ob_start();
       require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $listeAllTitle = ob_get_clean();
-    $this->page->addVar('listeAllTitle', $listeAllTitle);
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
  
 
     
@@ -162,10 +161,7 @@ class ArticlesController extends BackController
         'contenu' => $request->postData('contenu'),
         'validated' => false
       ]);
-      
-      //echo 'setFlash<br>';
-      $this->app->user()->setFlash('Le commentaire va être prochainement validé !');
-      
+            
     }
     else
     {
@@ -183,7 +179,7 @@ class ArticlesController extends BackController
     if ($formHandler->process())
     {
       //echo '$formHandler->process() : <br>'; 
-      $this->app->user()->setFlash('Le commentaire a bien été ajouté, merci !');
+      $this->app->user()->setFlash('Le commentaire va être prochainement validé ! Merci !');
  
       $this->app->httpResponse()->redirect('articles-'.$request->getData('id_article').'.html');
     }
@@ -194,14 +190,17 @@ class ArticlesController extends BackController
     
     $manager = $this->managers->getManagerOf('Articles');
      
-     //Variable pour les titres du bandeau latéral :
+     //bandeau lateral :
+    $manager = $this->managers->getManagerOf('Articles');
+    $nombreArticles = $manager->count();
+    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
-    //echo 'listeAllTitle[0]->titre() : ' . $listeAllTitle[0]['titre'] . '<br>';
     ob_start();
       require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $listeAllTitle = ob_get_clean();
-    $this->page->addVar('listeAllTitle', $listeAllTitle);
- 
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
+     
 	
 	//Variable pour le titre de l'article à commenter :
     $id_article = $request->getData('id_article');
@@ -273,21 +272,65 @@ class ArticlesController extends BackController
     }
  
     
-   
-     
-     //Variable pour les titres du bandeau latéral :
-	$manager = $this->managers->getManagerOf('Articles');
+
+    //bandeau lateral :
+    $manager = $this->managers->getManagerOf('Articles');
+    $nombreArticles = $manager->count();
+    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
-    //echo 'listeAllTitle[0]->titre() : ' . $listeAllTitle[0]['titre'] . '<br>';
     ob_start();
       require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $listeAllTitle = ob_get_clean();
-    $this->page->addVar('listeAllTitle', $listeAllTitle);
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
  
-	
 
-  
   }
+  
+  
+  public function executeWhoamI(HTTPRequest $request)
+  {
+    //echo 'articlesController->executeWhoamI <br>';
+    
+    //variable pour le titre du bandeau :
+    $this->page->addVar('title', 'qui je suis?');
+    
+    //$test = this->SideStrip();
+    
+    
+    //bandeau lateral :
+    $manager = $this->managers->getManagerOf('Articles');
+    $nombreArticles = $manager->count();
+    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    $this->page->addVar('nombreArticles', $nombreArticles);
+    $listeAllTitle = $manager->getAllTitle();
+    ob_start();
+      require __DIR__ .'/views/bandeau_lateral_titre.php';
+    $bandeau_lateral = ob_get_clean();
+    $this->page->addVar('bandeau_lateral', $bandeau_lateral);
+
+  }
+  
+  
+  
+  private function SideStrip()
+  {
+    //echo 'articlesController->SideStrip <br>';
+    
+    //bandeau lateral :
+    $manager = $this->managers->getManagerOf('Articles');
+    $nombreArticles = $manager->count();
+    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    $this->page->addVar('nombreArticles', $nombreArticles);
+    $listeAllTitle = $manager->getAllTitle();
+    ob_start();
+      require __DIR__ .'/views/bandeau_lateral_titre.php';
+    $bandeau_lateral = ob_get_clean();
+    
+    return $bandeau_lateral;
+
+  }
+
 
 
 }

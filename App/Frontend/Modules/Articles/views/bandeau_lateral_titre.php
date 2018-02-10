@@ -1,3 +1,11 @@
+
+<div class="col-md-3">
+<section class="encart bandeau_lateral">
+		
+<h2>Liste des <?= $nombreArticles ?> articles disponibles : </h2>
+			
+			
+
 <?php
 
 header( 'content-type: text/html; charset=utf-8' );
@@ -9,3 +17,8 @@ foreach ($listeAllTitle as $title_article)
 			
 <?php
 }
+?>
+
+</section>
+
+</div>

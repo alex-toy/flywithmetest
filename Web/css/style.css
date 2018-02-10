@@ -1,6 +1,6 @@
 body {
 background-color:blue;
-background-image:url(../images/IMG_0121.png);
+background-image:url(../images/IMG_0122.png);
 background-size: 1500px;
 }
 
@@ -12,7 +12,9 @@ background-size: 1500px;
 	color: blue;
 	margin : 5px;
 	padding : 5px;
-	background-color: coral;
+	background-color: white;
+	
+	text-align : center;
 }
 
 
@@ -47,7 +49,7 @@ background-size: 1500px;
 	color: blue;
 	margin : 5px;
 	padding : 5px;
-	background-color: coral;
+	background-color: white;
 }
 
 
@@ -69,14 +71,41 @@ background-size: 1500px;
     background-color: black;
     padding:10px;
 }
- 
+
+
+
+.cycle
+{
+	border: 3px blue solid;
+	border-radius: 10px;
+	color: blue;
+	margin : 5px;
+	padding : 5px;
+	background-color: blue;
+	
+}
 
  
 
- 
+.jaune {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #ffff00;
+}
 
  
 
+
+
+.footer_
+{
+	position: fixed;
+  	top             : -10;
+    width           : 100%;
+    left            : 0;
+	
+}
 
 
 

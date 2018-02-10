@@ -11,6 +11,7 @@ class Articles extends Entity
             $dateAjout,
             $dateModif,
             $titre;
+            
  
   const AUTEUR_INVALIDE = 1;
   const TITRE_INVALIDE = 2;
@@ -80,6 +81,8 @@ class Articles extends Entity
 
     $this->titre = $titre;
   }
+  
+  
  
   // GETTERS //
  
@@ -117,6 +120,8 @@ class Articles extends Entity
   {
     return $this->arrivee;
   }
+  
+  
   
   
 }

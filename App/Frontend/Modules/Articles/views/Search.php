@@ -3,7 +3,9 @@
 
 <form method="post">
 
-<aside class="col-lg-4">
+
+
+<aside class="col-lg-4 class="dropdown"">
 		<label>Départ :</label><br />
 							   
 		<select name="depart">
