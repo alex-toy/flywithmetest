@@ -7,7 +7,7 @@
 if($nombreComments == 0)
 {
 ?>
-<h2 style="text-align:left">Il n'y a actuellement aucun commentaires sur l'article <?= $title_article[0] ?>.</h2>
+<h2 style="text-align:left">Il n'y a actuellement aucun commentaire sur l'article <?= $title_article[0] ?>.</h2>
 
 
 <?php

@@ -18,7 +18,7 @@ class ContactController extends BackController
   
   public function executeContact(HTTPRequest $request)
   {
-    //echo 'articlesController->executeContact <br>';
+    echo 'articlesController->executeContact <br>';
     
     //titre de la page :
     $this->page->addVar('title', 'contact');
@@ -32,7 +32,10 @@ class ContactController extends BackController
 		$email_from = $_POST['email'];
 		$message = htmlspecialchars($_POST['message']);
 		//$message = html_entity_decode($_POST['message']);
+	
+
 		//$message = getcontent( $_POST[tinymce.get('message').getContent()] );
+		
 
 		$subject = $_POST['subject'];
 		$formcontent="From: $name \n Message: $message";
@@ -50,7 +53,9 @@ class ContactController extends BackController
 
 		//=====Envoi de l'e-mail.
 		mail($mail_dest,$subject,$message,$header) or die("Error!");
+		//echo 'envoi mail';
 		
+	
 		
 		//echo 'setFlash<br>';
       	$this->app->user()->setFlash("Merci " . $name .  " pour votre message, je ne manquerai pas d'y répondre!");
@@ -60,16 +65,7 @@ class ContactController extends BackController
     
   }
   
-  
-  public function executeMail(HTTPRequest $request)
-  {
-    //echo 'articlesController->executeMail <br>';
-    
-    //titre de la page :
-    $this->page->addVar('title', 'mail reçu');
-    
-    
-  }
+
   
   
   public function executeLink(HTTPRequest $request)

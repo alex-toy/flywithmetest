@@ -4,6 +4,7 @@ USE news;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS article;
+DROP TABLE IF EXISTS pilot;
 
 
 
@@ -39,6 +40,17 @@ CREATE TABLE IF NOT EXISTS comments (
 
 
 
+CREATE TABLE IF NOT EXISTS pilot (
+  	id mediumint(9) NOT NULL AUTO_INCREMENT,
+  	PRIMARY KEY (id),
+  	
+ 	pilotname varchar(50) NOT NULL UNIQUE,
+ 	
+ 	email varchar(50) NOT NULL UNIQUE,
+ 	
+ 	registered BOOLEAN DEFAULT false
+  	
+)DEFAULT CHARSET=utf8 ;
 
 
 
@@ -50,16 +62,19 @@ CREATE TABLE IF NOT EXISTS comments (
 
 
 
-DROP TABLE IF EXISTS news;
-CREATE TABLE IF NOT EXISTS news (
-  id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  auteur varchar(30) NOT NULL,
-  titre varchar(100) NOT NULL,
-  contenu text NOT NULL,
-  dateAjout datetime NOT NULL,
-  dateModif datetime NOT NULL,
-  PRIMARY KEY (id)
-) DEFAULT CHARSET=utf8 ;
+
+
+
+-- DROP TABLE IF EXISTS news;
+-- CREATE TABLE IF NOT EXISTS news (
+--   id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+--   auteur varchar(30) NOT NULL,
+--   titre varchar(100) NOT NULL,
+--   contenu text NOT NULL,
+--   dateAjout datetime NOT NULL,
+--   dateModif datetime NOT NULL,
+--   PRIMARY KEY (id)
+-- ) DEFAULT CHARSET=utf8 ;
 
 
 

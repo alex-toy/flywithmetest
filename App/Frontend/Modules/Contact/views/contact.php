@@ -1,3 +1,5 @@
+
+
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-10">
@@ -30,8 +32,9 @@
 <label for="Email">Message :</label>
 
 <textarea id="message" name="message" rows="6" cols="25"></textarea><br />
-<input type="submit" value="Send">
-<input type="reset" value="Clear">
+
+
+<INPUT class="btn btn-primary" onclick="GetMessage()" type="submit" value="Send">
 
 
 </form>
@@ -43,6 +46,43 @@
   </div>
   
 </div>
+
+
+
+<script src="http://localhost/~alexei/FlyWithMeOC2/Web/tinymce/tinymce.min.js"></script>
+
+<script>
+
+function GetMessage() {
+
+	var message = document.document.getElementById("message");
+	
+	message.innerHTML = tinymce.get('message').getContent();
+	alert(tinymce.get('message').getContent());
+	
+}
+
+
+
+	
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

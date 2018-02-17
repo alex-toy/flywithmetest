@@ -12,7 +12,6 @@
 	
 	<!-- module Contact -->
 	<route url="/~alexei/FlyWithMeOC2/Web/Contact" module="Contact" action="Contact"/>
-	<route url="/~alexei/FlyWithMeOC2/Web/Mail" module="Contact" action="Mail"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/Link" module="Contact" action="Link"/>
 
 	

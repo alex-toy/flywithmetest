@@ -1,6 +1,6 @@
 <?php
 
-echo 'dans bootstrap.php OC2<br>';
+//echo 'dans bootstrap.php OC2<br>';
 
 
 const DEFAULT_APP = 'Frontend';

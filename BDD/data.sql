@@ -35,6 +35,40 @@ VALUES 	(1, 'alex', '2018-11-17', 'SUPER', false),
 
 -- SELECT * FROM comments;
 
+
+
+
+
+INSERT INTO pilot (pilotname, email, registered) 
+VALUES 	('alex', 'alex@flywithme.fr', true),
+        ('seb', 'seb@flywithme.fr', true),
+		('elo', 'elo@flywithme.fr', false),
+		('kate', 'kate@flywithme.fr', true);
+
+-- SELECT * FROM pilot;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
  
  
