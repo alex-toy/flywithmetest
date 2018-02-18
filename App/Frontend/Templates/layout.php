@@ -1,8 +1,10 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
-    <title>FlyWithMe - <?= $title ?></title>
+    <title>FlyWithMe - <?= $title ?> <?= $welcome ?></title>
 
     <link rel="stylesheet" href="http://localhost/~alexei/FlyWithMeOC2/Web/css/style.css" />
     
@@ -37,6 +39,8 @@
       	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/Link">Liens</a></li>
        	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/Contact">Me contacter</a></li>
        	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/search">Recherche</a></li>
+       	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/createAccount">Créer un compte</a></li>
+       	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/connect">Se connecter</a></li>
        	<li><a href="http://localhost/~alexei/FlyWithMeOC2/Web/admin/">Admin</a></li>
     </ul>
   </div>
@@ -57,6 +61,19 @@
 	
 	<!-- CONTENU ====================================================-->
 	<div class="col-md-9">
+		
+		<!-- bienvenue de connexion ================================================== -->
+				<?php if ($_SESSION['connected'] == true) echo '
+				<div class="row">
+					<div class="col-sm-8"></div>
+						<div class="col-sm-3 encart">
+							<p style="text-align: center;"  >Bienvenue ', $_SESSION['name'] ,' !</p>
+							<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/disconnect">deconnexion</a></p>
+						</div>
+					
+					</div>';?>
+		
+		
 		
 		
 		<!-- titre global ================================================== -->

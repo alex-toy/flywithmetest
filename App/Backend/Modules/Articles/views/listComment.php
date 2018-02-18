@@ -46,10 +46,6 @@ foreach ($listeComments as $comment)
   		<td style="text-align:center">', $comment['contenu'], '</td>
   		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-', $comment['id'],'-', $id_article ,'.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
 
-
-
-
-
 	</tr>';
 }
 ?>

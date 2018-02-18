@@ -9,8 +9,11 @@ use \OCFram\NotNullValidator;
  
 class ArticlesFormBuilder extends FormBuilder
 {
+  
   public function build()
   {
+    //echo 'ArticlesFormBuilder->build<br>';
+    
     $this->form
        
        ->add(new StringField([
@@ -43,6 +46,9 @@ class ArticlesFormBuilder extends FormBuilder
           new NotNullValidator('Merci de spécifier le contenu de la news'),
         ],
        ]));
+       
+     //echo 'ArticlesFormBuilder->build fin<br>';
   
   }
+  
 }

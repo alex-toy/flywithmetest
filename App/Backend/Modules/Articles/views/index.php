@@ -53,6 +53,12 @@ foreach ($listeArticles as $art)
 
 
 
+<div class="col-sm-1"></div>
+<div class="encart col-sm-10">
+<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/pilotes/">gestion des pilotes</a>
+</div>
+
+
 <script>
 function deleteArticle(id) {
 	if (confirm("êtes vous sûr de vouloir supprimer cet article ?")) { 

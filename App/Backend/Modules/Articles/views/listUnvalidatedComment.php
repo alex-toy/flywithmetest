@@ -130,7 +130,7 @@ function ValidateGroup(idArticle) {
 	
 	//alert(CommentsIdsToBeValidated);
 	
-	if (confirm("êtes vous sûr de vouloir supprimer ces commentaires ?")) { 
+	if (confirm("êtes vous sûr de vouloir valider ces commentaires ?")) { 
 		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-validate-" + CommentsIdsToBeValidated + "-" + idArticle.trim()  + ".html"; 
 		//alert(redirect);
 		document.location.href=redirect; 	

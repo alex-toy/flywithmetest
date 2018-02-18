@@ -36,15 +36,13 @@ foreach ($validatedcomments as $comment)
 }
 ?>
  
-<?php  if($_SESSION['connected']){ 
-	//echo $_SESSION['name'];
-	echo '<a class="btn btn-primary" href="commentaire-', $article['id'], '.html">Ajouter un commentaire</a></p>';
-}
-else{
-	echo '<a disabled class="btn btn-primary">Ajouter un commentaire</a></p>';
-}
+<p><a class="btn btn-primary" href="commentaire-<?= $article['id'] ?>.html">Ajouter un commentaire</a></p>
 
-?>
+
+
+
+
+
 
 
 

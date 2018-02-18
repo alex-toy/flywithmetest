@@ -48,6 +48,8 @@ CREATE TABLE IF NOT EXISTS pilot (
  	
  	email varchar(50) NOT NULL UNIQUE,
  	
+ 	pwrd varchar(50) NOT NULL,
+ 	
  	registered BOOLEAN DEFAULT false
   	
 )DEFAULT CHARSET=utf8 ;

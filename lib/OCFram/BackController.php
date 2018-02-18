@@ -22,6 +22,8 @@ abstract class BackController extends ApplicationComponent
     $this->setAction($action);
     $this->setView($action);
   }
+  
+  
  
   public function execute()
   {
@@ -72,10 +74,11 @@ abstract class BackController extends ApplicationComponent
     //echo 'vue : ' . $view . '<br>';
  
     $this->view = $view;
+    
+    //echo __DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php' . '<br>';
  
     $this->page->setContentFile(__DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php');
     
-    $this->page->setComp(__DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->comp.'.php');
   }
   
   public function View()

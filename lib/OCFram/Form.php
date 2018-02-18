@@ -13,10 +13,16 @@ class Form
  
   public function add(Field $field)
   {
+    //echo 'Form->add';
+    //echo $field->name(); 
     $attr = $field->name(); // On récupère le nom du champ.
+    //echo $this->entity->$attr();
+    
     $field->setValue($this->entity->$attr()); // On assigne la valeur correspondante au champ.
  
     $this->fields[] = $field; // On ajoute le champ passé en argument à la liste des champs.
+    
+    //print_r($this->fields);
     return $this;
   }
  
@@ -37,15 +43,14 @@ class Form
   {
     $valid = true;
  
-    // On vérifie que tous les champs sont valides.
     foreach ($this->fields as $field)
     {
       if (!$field->isValid())
       {
+        //echo $field->name() . ' vaut ' . $field->value() . ' et n\'est pas valide <br>';
         $valid = false;
       }
     }
- 
     return $valid;
   }
  
@@ -59,3 +64,16 @@ class Form
     $this->entity = $entity;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

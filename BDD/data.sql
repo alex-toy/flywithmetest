@@ -39,11 +39,11 @@ VALUES 	(1, 'alex', '2018-11-17', 'SUPER', false),
 
 
 
-INSERT INTO pilot (pilotname, email, registered) 
-VALUES 	('alex', 'alex@flywithme.fr', true),
-        ('seb', 'seb@flywithme.fr', true),
-		('elo', 'elo@flywithme.fr', false),
-		('kate', 'kate@flywithme.fr', true);
+INSERT INTO pilot (pilotname, email, registered, pwrd) 
+VALUES 	('alex', 'alex@flywithme.fr', true, 'pwd1'),
+        ('seb', 'seb@flywithme.fr', true, 'pwd2'),
+		('elo', 'elo@flywithme.fr', false, 'pwd3'),
+		('kate', 'kate@flywithme.fr', true, 'pwd4');
 
 -- SELECT * FROM pilot;
 
