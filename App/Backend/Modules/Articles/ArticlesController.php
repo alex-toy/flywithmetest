@@ -4,6 +4,7 @@ namespace App\Backend\Modules\Articles;
 use \OCFram\BackController;
 use \OCFram\HTTPRequest;
 use \Entity\Articles;
+use \OCFram\User;
 use \Entity\Comment;
 use \FormBuilder\CommentFormBuilder;
 use \FormBuilder\ArticlesFormBuilder;
@@ -336,6 +337,10 @@ class ArticlesController extends BackController
     $this->app->httpResponse()->redirect($redirection);
     
   }
+  
+  
+  
+  
 
 
 

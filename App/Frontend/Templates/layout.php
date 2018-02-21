@@ -63,15 +63,27 @@
 	<div class="col-md-9">
 		
 		<!-- bienvenue de connexion ================================================== -->
-				<?php if ($_SESSION['connected'] == true) echo '
-				<div class="row">
+		<?php if ($_SESSION['connected'] == true && $_SESSION['name'] == "admin"){ 
+				echo 
+				'<div class="row">
 					<div class="col-sm-8"></div>
 						<div class="col-sm-3 encart">
 							<p style="text-align: center;"  >Bienvenue ', $_SESSION['name'] ,' !</p>
+							<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/DisconnectAdmin/">deconnexion</a></p>
+						</div>
+				</div>';
+				}
+				else if ($_SESSION['connected'] == true){ 
+				echo 
+				'<div class="row">
+					<div class="col-sm-8"></div>
+						<div class="col-sm-3 encart">
+							<p style="text-align: center;"  >Bienvenue ', ucfirst($_SESSION['name']) ,' !</p>
 							<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/disconnect">deconnexion</a></p>
 						</div>
-					
-					</div>';?>
+				</div>';
+				}
+				?>
 		
 		
 		
@@ -85,15 +97,17 @@
 		<?= $content ?>
 		
 		
+		
 		<!-- getFlash ================================================== -->
 		<?php if ($user->hasFlash()) echo '
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-10">
+			<p style="text-align: center;"  class="encart">', $user->getFlash(), '</p>
+			</div>
+		</div>'; ?>
 		
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-10">
-				<p style="text-align: center;"  class="encart">', $user->getFlash(), '</p>
-				</div>
-			</div>'; ?>
+		
 		
 		
 	</div>

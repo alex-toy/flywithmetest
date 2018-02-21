@@ -18,7 +18,7 @@ class ContactController extends BackController
   
   public function executeContact(HTTPRequest $request)
   {
-    echo 'articlesController->executeContact <br>';
+    //echo 'ContactController->executeContact <br>';
     
     //titre de la page :
     $this->page->addVar('title', 'contact');

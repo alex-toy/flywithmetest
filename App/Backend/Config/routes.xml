@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
 	
-	<!-- gestion -->
+	<!-- connexion -->
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/" module="Articles" action="index" />
 	
+	
+	
+	<!-- déconnexion -->
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/DisconnectAdmin/" module="Connexion" action="DisconnectAdmin" />
+
+
+
 	
 	<!-- gestion des articles -->
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/articles-update-([0-9]+)\.html" module="Articles" action="update" vars="id" />

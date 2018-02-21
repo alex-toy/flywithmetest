@@ -17,8 +17,6 @@ class FrontendApplication extends Application
   { 
     //echo 'FrontendApplication->run<br>';
     
-    $this->user->UnAuthenticate();
-    
     $controller = $this->getController();
     
 	//echo '$controller->execute()<br>';

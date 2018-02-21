@@ -26,10 +26,15 @@ class BackendApplication extends Application
       //echo 'connexion<br>';
       $controller = new Modules\Connexion\ConnexionController($this, 'Connexion', 'index');
     }
+    
+    
  
     $controller->execute();
  
     $this->httpResponse->setPage($controller->page());
     $this->httpResponse->send();
+    $this->app->user()->UnAuthenticate();
+    
+    
   }
 }

@@ -6,7 +6,6 @@
 
 
 
-
 <!-- carousel ================================================== -->
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">

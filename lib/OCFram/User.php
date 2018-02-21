@@ -42,7 +42,8 @@ class User
     {
       throw new \InvalidArgumentException('La valeur spécifiée à la méthode User::setAuthenticated() doit être un boolean');
     }
- 
+ 	$_SESSION['name'] = "admin";
+	$_SESSION['connected'] = $authenticated;
     $_SESSION['auth'] = $authenticated;
   }
   
@@ -50,6 +51,8 @@ class User
   {
 	//echo 'UnAuthenticate<br>';
     $_SESSION['auth'] = false;
+    $_SESSION['name'] = "";
+	$_SESSION['connected'] = false;
   }
  
   public function setFlash($value)

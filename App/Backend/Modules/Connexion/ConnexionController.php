@@ -6,9 +6,13 @@ use \OCFram\HTTPRequest;
  
 class ConnexionController extends BackController
 {
+  
+  
   public function executeIndex(HTTPRequest $request)
   {
     $this->page->addVar('title', 'Connexion');
+    
+    
  
     if ($request->postExists('login'))
     {
@@ -21,6 +25,8 @@ class ConnexionController extends BackController
       if ($login == $this->app->config()->get('login') && $password == $this->app->config()->get('passw'))
       {
         //echo 'avant le redirect<br>';
+        $_SESSION['name'] = "admin";
+		$_SESSION['connected'] = true;
         $this->app->user()->setAuthenticated(true);
         $password = '';
         $login = '';
@@ -32,6 +38,22 @@ class ConnexionController extends BackController
       }
     }
   }
+  
+  
+  
+  public function executeDisconnectAdmin()
+  {
+		$this->app->user()->UnAuthenticate();
+		$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
+  }
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 

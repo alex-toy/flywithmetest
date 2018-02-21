@@ -38,6 +38,16 @@ class ArticlesController extends BackController
  	//Liste des premiers articles :
  	$listeArticles = $manager->getList(0, $nombreArticles);
     //echo 'listeArticles[0]->titre() : ' . $listeArticles[0]->titre() . '<br>';
+    foreach ($listeArticles as $art)
+    {
+      if (strlen($art->contenu()) > $nombreCaracteres)
+      {
+        $debut = substr($art->contenu(), 0, $nombreCaracteres);
+        $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
+        
+        $art->setContenu($debut);
+      }
+    }
     $this->page->addVar('listeArticles', $listeArticles);
     
     
@@ -78,6 +88,16 @@ class ArticlesController extends BackController
     //echo 'getManagerOf(Articles) : ';
     $manager = $this->managers->getManagerOf('Articles');
  	$listeArticles = $manager->getAllArticles();
+ 	foreach ($listeArticles as $art)
+    {
+      if (strlen($art->contenu()) > $nombreCaracteres)
+      {
+        $debut = substr($art->contenu(), 0, $nombreCaracteres);
+        $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
+        
+        $art->setContenu($debut);
+      }
+    }
     //echo 'listeArticles[0]->titre() : ' . $listeArticles[0]->titre() . '<br>';
     
     
@@ -157,7 +177,8 @@ class ArticlesController extends BackController
       //echo 'POST<br>';
       $comment = new Comment([
         'id_article' => $request->getData('id_article'),
-        'auteur' => $request->postData('auteur'),
+        'auteur' => $_SESSION['name'],
+        //'auteur' => $request->postData('auteur'),
         'contenu' => $request->postData('contenu'),
         'validated' => false
       ]);
@@ -179,7 +200,7 @@ class ArticlesController extends BackController
     if ($formHandler->process())
     {
       //echo '$formHandler->process() : <br>'; 
-      $this->app->user()->setFlash('Le commentaire va être prochainement validé ! Merci !');
+      $this->app->user()->setFlash(ucfirst($_SESSION['name']) . ', votre commentaire va être prochainement validé ! Merci !');
  
       $this->app->httpResponse()->redirect('articles-'.$request->getData('id_article').'.html');
     }
@@ -313,25 +334,7 @@ class ArticlesController extends BackController
   
   
   
-  private function SideStrip()
-  {
-    //echo 'articlesController->SideStrip <br>';
-    
-    //bandeau lateral :
-    $manager = $this->managers->getManagerOf('Articles');
-    $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
-    $this->page->addVar('nombreArticles', $nombreArticles);
-    $listeAllTitle = $manager->getAllTitle();
-    ob_start();
-      require __DIR__ .'/views/bandeau_lateral_titre.php';
-    $bandeau_lateral = ob_get_clean();
-    
-    return $bandeau_lateral;
-
-  }
-
-
+  
 
 }
 

@@ -3,11 +3,14 @@ namespace FormBuilder;
  
 use \OCFram\FormBuilder;
 use \OCFram\StringField;
+use \OCFram\PwdField;
 use \OCFram\TextField;
 use \OCFram\MaxLengthValidator;
 use \OCFram\NotNullValidator;
 use \OCFram\MailFormatValidator;
 use \OCFram\MinLengthValidator;
+use \OCFram\HasNumberValidator;
+use \OCFram\HasLetterValidator;
 
 
  
@@ -33,17 +36,19 @@ class PilotFormBuilder extends FormBuilder
         'name' => 'email',
         'maxLength' => 100,
         'validators' => [
-          	new MailFormatValidator('merci de spécifier une adresse mail valide', 100),
+          	new MailFormatValidator('Merci de spécifier une adresse mail valide', 100),
           	new NotNullValidator('Merci de spécifier une adresse mail')
          ]
        ]); 
        
-    $pwrd = new StringField([
+    $pwrd = new PwdField([
         'label' => 'mot de passe',
         'name' => 'pwrd',
         'maxLength' => 100,
         'validators' => [
-          	new MinLengthValidator('Le mot de passe est trop court (10 caractères minimum)', 10)
+          	new MinLengthValidator('Le mot de passe est trop court (10 caractères minimum)', 10),
+          	new HasNumberValidator('Le mot de passe doit contenir au moins un chiffre.'),
+          	new HasLetterValidator('Le mot de passe doit contenir au moins une lettre.')
          ]
        ]);
        
