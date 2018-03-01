@@ -17,27 +17,18 @@ class ArticlesController extends BackController
 
   public function executeListe_articles(HTTPRequest $request)
   {
-    //echo 'articlesController->executeListe_articles <br>';
-    
-    
-    //titre de la page :
     $this->page->addVar('title', 'accueil');
     
     
     $nombreArticles = $this->app->config()->get('nombre_news');
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
-    //echo 'nombreNews : ' . $nombreArticles . '<br>';
-    //echo 'nombreCaracteres : ' . $nombreCaracteres . '<br>';
-
     
-    // On récupère le manager des articles.
-    //echo 'getManagerOf(Articles) : ';
+    
     $manager = $this->managers->getManagerOf('Articles');
  	
  	
- 	//Liste des premiers articles :
+ 	
  	$listeArticles = $manager->getList(0, $nombreArticles);
-    //echo 'listeArticles[0]->titre() : ' . $listeArticles[0]->titre() . '<br>';
     foreach ($listeArticles as $art)
     {
       if (strlen($art->contenu()) > $nombreCaracteres)
@@ -53,7 +44,6 @@ class ArticlesController extends BackController
     
     //bandeau lateral :
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
     ob_start();
@@ -63,7 +53,6 @@ class ArticlesController extends BackController
     
  
 
-    // variable pour le titre et le carousel :
     ob_start();
       require __DIR__ .'/views/titre_global.html';
     $titre_global = ob_get_clean();
@@ -75,17 +64,11 @@ class ArticlesController extends BackController
   
   public function executeListe_all_articles(HTTPRequest $request)
   {
-    //echo 'articlesController->executeListe_articles <br>';
-    
     
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
-    //echo 'nombreCaracteres : ' . $nombreCaracteres . '<br>';
     
-    //variable pour le titre du bandeau :
     $this->page->addVar('title', 'accueil');
     
-    // On récupère le manager des articles.
-    //echo 'getManagerOf(Articles) : ';
     $manager = $this->managers->getManagerOf('Articles');
  	$listeArticles = $manager->getAllArticles();
  	foreach ($listeArticles as $art)
@@ -98,22 +81,16 @@ class ArticlesController extends BackController
         $art->setContenu($debut);
       }
     }
-    //echo 'listeArticles[0]->titre() : ' . $listeArticles[0]->titre() . '<br>';
     
     
-    // On ajoute la variable $listeArticles à la vue.
     $this->page->addVar('listeArticles', $listeArticles);
     
     
-    //variable $nombreArticles :
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
     
     
     
-
-    //Variable pour les titres :
     $listeAllTitle = $manager->getAllTitle();
     ob_start();
       require __DIR__ .'/views/bandeau_lateral_titre.php';

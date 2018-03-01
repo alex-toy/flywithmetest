@@ -8,7 +8,7 @@ class PDOFactory
     //echo 'getMysqlConnexion : ';
     
     
-    $db = new \PDO('mysql:host=localhost;dbname=db725682133;charset=utf8', 'root', 'root');
+    $db = new \PDO('mysql:host=localhost;dbname=news;charset=utf8', 'root', 'root');
 
     
     

@@ -8,20 +8,18 @@
 	<route url="/~alexei/FlyWithMeOC2/Web/commentaire-([0-9]+)\.html" module="Articles" action="insertComment" vars="id_article" />
 	<route url="/~alexei/FlyWithMeOC2/Web/search" module="Articles" action="Search"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/WhoamI" module="Articles" action="WhoamI"/>
-	
-	
+
+
 	<!-- module Contact -->
 	<route url="/~alexei/FlyWithMeOC2/Web/Contact" module="Contact" action="Contact"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/Link" module="Contact" action="Link"/>
-	
-	
+
+
 	<!-- module gestion compte -->
 	<route url="/~alexei/FlyWithMeOC2/Web/createAccount" module="Pilot" action="createAccount"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/connect" module="Pilot" action="connect"/>
 	<route url="/~alexei/FlyWithMeOC2/Web/disconnect" module="Pilot" action="disconnect"/>
-	
-	
-	
+
 </routes>
 
 
