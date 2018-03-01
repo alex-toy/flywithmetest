@@ -288,7 +288,7 @@ class ArticlesController extends BackController
 
 
 	$CommentsIdsToBeDeletedArray = explode(",",$CommentsIdsToBeDeleted);
-    print_r($CommentsIdsToBeDeletedArray);
+    
     
     
     $id_article = $request->getData('id_article');
@@ -320,7 +320,7 @@ class ArticlesController extends BackController
 
 
 	$CommentsIdsToBeValidatedArray = explode(",",$CommentsIdsToBeValidated);
-    print_r($CommentsIdsToBeValidatedArray);
+    
     
     
     $id_article = $request->getData('id_article');
