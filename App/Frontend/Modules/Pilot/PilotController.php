@@ -119,7 +119,7 @@ class PilotController extends BackController
 		{
 			//echo '$formHandler->process est terminé';
 			$this->app->user()->setFlash($pilot->pilotname() . ', Bienvenue chez FlyWithMe !!');
-			$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/createAccount');
+			$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
 		}
 	}
  	else if( !$pilotManager->HasUniqueName($pilot->pilotname()) && !empty($pilot->pilotname()) ){
@@ -140,7 +140,7 @@ class PilotController extends BackController
   
   public function executeDisconnect(HTTPRequest $request)
   {
-    echo 'articlesController->executeDisconnect <br>';
+    //echo 'articlesController->executeDisconnect <br>';
     $this->page->addVar('title', 'connection');
     
     $_SESSION['name'] = "";

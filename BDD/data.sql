@@ -24,20 +24,6 @@ VALUES 	('Corbas-Gap', 'Corbas', 'Gap', '2017-11-17', '2017-11-22', 'Article Cor
 
 
 
-INSERT INTO comments (id_article, auteur, date, contenu, validated) 
-VALUES 	(1, 'alex', '2018-11-17', 'SUPER', false),
-        (2, 'seb', '2018-11-18', 'super', false),
-		(3, 'elo', '2018-11-19', 'Bien cool', false),
-		(4, 'elo', '2018-11-20', 'a refaire', false),
-		(5, 'kate', '2018-11-21', 'Magnifique, vivement la corse', false),
-		(6, 'kate', '2018-11-22', 'Magnifique, a refaire', false);
-
-
--- SELECT * FROM comments;
-
-
-
-
 
 INSERT INTO pilot (pilotname, email, registered, pwrd) 
 VALUES 	('alex', 'alex@flywithme.fr', true, 'pwd1'),
@@ -53,10 +39,28 @@ VALUES 	('alex', 'alex@flywithme.fr', true, 'pwd1'),
 
 
 
+INSERT INTO comments (id_article, auteur, date, contenu, validated) 
+VALUES 	(1, 'alex', '2018-11-17', 'SUPER', false),
+        (2, 'seb', '2018-11-18', 'super', false),
+		(3, 'elo', '2018-11-19', 'Bien cool', false),
+		(4, 'elo', '2018-11-20', 'a refaire', false),
+		(5, 'kate', '2018-11-21', 'Magnifique, vivement la corse', false),
+		(6, 'kate', '2018-11-22', 'Magnifique, a refaire', false);
+
+
+-- SELECT * FROM comments;
 
 
 
 
+
+-- INSERT INTO comments (id_article, auteur, date, contenu, validated, id_pilot) 
+-- VALUES 	(1, 'alex', '2018-11-17', 'SUPER', false, 1),
+--         (2, 'seb', '2018-11-18', 'super', false, 2),
+-- 		(3, 'elo', '2018-11-19', 'Bien cool', false, 3),
+-- 		(4, 'elo', '2018-11-20', 'a refaire', false, 4),
+-- 		(5, 'kate', '2018-11-21', 'Magnifique, vivement la corse', false, 3),
+-- 		(6, 'kate', '2018-11-22', 'Magnifique, a refaire', false, 4);
 
 
 

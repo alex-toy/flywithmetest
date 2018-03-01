@@ -43,6 +43,7 @@ class ConnexionController extends BackController
   
   public function executeDisconnectAdmin()
   {
+		//echo 'ConnexionController->executeDisconnectAdmin';
 		$this->app->user()->UnAuthenticate();
 		$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
   }

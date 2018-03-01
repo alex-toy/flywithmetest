@@ -177,8 +177,9 @@ class ArticlesController extends BackController
       //echo 'POST<br>';
       $comment = new Comment([
         'id_article' => $request->getData('id_article'),
+        //'id_pilot' => 1,
+        //'id_pilot' => $request->getData('id_pilot'),
         'auteur' => $_SESSION['name'],
-        //'auteur' => $request->postData('auteur'),
         'contenu' => $request->postData('contenu'),
         'validated' => false
       ]);

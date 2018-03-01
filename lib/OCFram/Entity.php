@@ -18,7 +18,7 @@ abstract class Entity implements \ArrayAccess
  
   public function isNew()
   {
-    echo 'Entity->isNew<br>';
+    //echo 'Entity->isNew<br>';
     return empty($this->id);
   }
  

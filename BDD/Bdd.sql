@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS pilot;
 
 
 CREATE TABLE IF NOT EXISTS article (
-  id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titre varchar(100) NOT NULL,
   contenu text NOT NULL,
   depart varchar(100) NOT NULL,
@@ -23,27 +23,13 @@ CREATE TABLE IF NOT EXISTS article (
 
 
 
-CREATE TABLE IF NOT EXISTS comments (
-  	id mediumint(9) NOT NULL AUTO_INCREMENT,
-  	PRIMARY KEY (id),
-  	
-  	id_article SMALLINT UNSIGNED NOT NULL,
-	-- CONSTRAINT fk_id_article FOREIGN KEY (id_article) REFERENCES article(id),
-  
- 	auteur varchar(50) NOT NULL,
- 	contenu text NOT NULL,
- 	date datetime NOT NULL,
- 	
- 	validated BOOLEAN DEFAULT false
-  	
-)DEFAULT CHARSET=utf8 ;
 
 
 
 CREATE TABLE IF NOT EXISTS pilot (
-  	id mediumint(9) NOT NULL AUTO_INCREMENT,
-  	PRIMARY KEY (id),
-  	
+  	id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  	PRIMARY KEY (id),  	
+  	  	
  	pilotname varchar(50) NOT NULL UNIQUE,
  	
  	email varchar(50) NOT NULL UNIQUE,
@@ -58,6 +44,42 @@ CREATE TABLE IF NOT EXISTS pilot (
 
 
 
+CREATE TABLE IF NOT EXISTS comments (
+  	id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  	PRIMARY KEY (id),
+  	
+  	id_article SMALLINT UNSIGNED NOT NULL,
+	CONSTRAINT fk_id_article FOREIGN KEY (id_article) REFERENCES article(id),
+  
+ 	auteur varchar(50) NOT NULL,
+ 	contenu text NOT NULL,
+ 	date datetime NOT NULL,
+ 	
+ 	validated BOOLEAN DEFAULT false
+  	
+)DEFAULT CHARSET=utf8 ;
+
+
+
+
+
+-- CREATE TABLE IF NOT EXISTS comments (
+--   	id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+--   	PRIMARY KEY (id),
+--   	
+--   	id_article SMALLINT UNSIGNED NOT NULL,
+-- 	CONSTRAINT fk_id_article FOREIGN KEY (id_article) REFERENCES article(id),
+-- 	
+-- 	id_pilot SMALLINT UNSIGNED NOT NULL,
+-- 	CONSTRAINT fk_id_pilot FOREIGN KEY (id_pilot) REFERENCES pilot(id),
+--   
+--  	auteur varchar(50) NOT NULL,
+--  	contenu text NOT NULL,
+--  	date datetime NOT NULL,
+--  	
+--  	validated BOOLEAN DEFAULT false
+--   	
+-- )DEFAULT CHARSET=utf8 ;
 
 
 
@@ -65,18 +87,6 @@ CREATE TABLE IF NOT EXISTS pilot (
 
 
 
-
-
--- DROP TABLE IF EXISTS news;
--- CREATE TABLE IF NOT EXISTS news (
---   id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
---   auteur varchar(30) NOT NULL,
---   titre varchar(100) NOT NULL,
---   contenu text NOT NULL,
---   dateAjout datetime NOT NULL,
---   dateModif datetime NOT NULL,
---   PRIMARY KEY (id)
--- ) DEFAULT CHARSET=utf8 ;
 
 
 

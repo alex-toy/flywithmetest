@@ -91,6 +91,50 @@ class PilotManagerPDO extends PilotManager
   
   
   
+  public function getAllCommentsFromPilots($pilotname)
+  {
+    //echo 'PilotManagerPDO->getAllCommentsFromPilots<br>';
+
+    $sql = 'SELECT comments.contenu AS content, article.titre AS title, comments.validated AS validation, comments.date AS date FROM comments INNER JOIN article ON comments.id_article=article.id WHERE comments.auteur = :pilotname;';
+
+    $requete = $this->dao->prepare($sql);
+    $requete->bindValue('pilotname', $pilotname);
+    $requete->execute();
+    $array_comment_temp = $requete->fetchAll();
+    $requete->closeCursor();
+    
+    //print_r($array_comment_temp);
+    return $array_comment_temp;
+    
+  }
+  
+  
+  
+  public function getCountCommentsFromPilots($pilotname)
+  {
+    //echo 'PilotManagerPDO->getCountCommentsFromPilots<br>';
+    
+    $AllPilotNames = $this->getAllPilots();
+    
+    $name_number_array = [];
+    for ($i=0; $i<count($AllPilotNames); $i++) {
+    	$sql = 'SELECT COUNT(*) FROM comments WHERE comments.auteur = :pilotname;';
+    	$requete = $this->dao->prepare($sql);
+    	$requete->bindValue('pilotname', $AllPilotNames[$i]['pilotname']);
+    	$requete->execute();
+    	$numberComments = $requete->fetchAll();
+    	$requete->closeCursor();
+    	
+    	//echo  $numberComments[0][0];
+    	//print_r($numberComments);
+    	
+    	$name_number_array[$AllPilotNames[$i]['pilotname']] = $numberComments[0][0];
+	}
+		return $name_number_array;
+  }
+  
+  
+  
   public function deletePilot($id)
   {
     //echo 'PilotManagerPDO->deletePilot<br>';

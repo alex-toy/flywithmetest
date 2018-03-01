@@ -21,7 +21,7 @@ class FormHandler
     if($this->request->method() == 'POST' && $this->form->isValid())
     {
       //echo 'si formulaire valide, insertion en bdd<br>';
-      //echo get_class($this->form->entity());
+      echo get_class($this->form->entity());
       $this->manager->save($this->form->entity());
  
       return true;

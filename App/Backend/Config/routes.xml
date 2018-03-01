@@ -32,6 +32,7 @@
 	<!-- gestion des pilotes -->
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/pilotes/" module="Pilot" action="index" />
 	<route url="/~alexei/FlyWithMeOC2/Web/admin/pilot-delete-([0-9]+)\.html" module="Pilot" action="deletePilot" vars="id"/>
+	<route url="/~alexei/FlyWithMeOC2/Web/admin/pilot-listComment-([a-zA-Z]+)\.html" module="Pilot" action="ListCommentPilot" vars="pilotname"/>
 
 
 

@@ -20,18 +20,38 @@ class PilotController extends BackController
     
     $this->page->addVar('listePilotes', $pilotmanager->getAllPilots());
     
-    //$this->page->addVar('NumberUnvalidatedComments', $manager->getNumberUnvalidatedComments());
-    //$this->page->addVar('nombreNews', $manager->count());
+    
+    $CountCommentsFromPilotName = $pilotmanager->getCountCommentsFromPilots($pilotname);
+    $this->page->addVar('CountCommentsFromPilotName', $CountCommentsFromPilotName);
+    
     
   }
   
   
   
   
+  public function executeListCommentPilot(HTTPRequest $request)
+  {
+    //echo 'PilotController->executeListCommentPilot<br>';
+    $pilotname = $request->getData('pilotname');
+    
+    $this->page->addVar('title', 'commentaires de ' . $pilotname);
+    $this->page->addVar('pilotname', $pilotname);
+    
+    
+    $pilotmanager = $this->managers->getManagerOf('Pilot');
+    
+    $AllCommentsFromPilotName = $pilotmanager->getAllCommentsFromPilots($pilotname);
+    $this->page->addVar('AllCommentsFromPilotName', $AllCommentsFromPilotName);
+    
+   }
+  
+  
+  
   
   public function executeDeletePilot(HTTPRequest $request)
   {
-    echo 'PilotController->executeDeletePilot<br>';
+    //echo 'PilotController->executeDeletePilot<br>';
     $this->page->addVar('title', 'suppression d\'un pilote');
     
     $piloteId = $request->getData('id');
