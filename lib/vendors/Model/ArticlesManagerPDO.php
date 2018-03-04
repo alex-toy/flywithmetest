@@ -175,14 +175,12 @@ class ArticlesManagerPDO extends ArticlesManager
     //echo 'getListCommentById : ' . $id_article . '<br>';
     
     $sql = 'SELECT * FROM comments WHERE id_article = :id_article AND validated = false;';
-    //echo $sql;
 
     $requete = $this->dao->prepare($sql);
     $requete->bindValue(':id_article', (int) $id_article, \PDO::PARAM_INT);
     $requete->execute();
  
     $list_comment = $requete->fetchAll();
-    //print_r($list_comment);
        
     
     $requete->closeCursor();
@@ -199,18 +197,14 @@ class ArticlesManagerPDO extends ArticlesManager
     
     // tableau d'id d'article:  =======================================
     $sql = 'SELECT id FROM Article;';
-    //echo $sql;
     $requete = $this->dao->prepare($sql);
     $requete->execute();
     $IdArticleArraytemp = $requete->fetchAll();
     $requete->closeCursor();
-    //print_r($IdArticleArraytemp);
     $IdArticleArray = [];
     foreach ($IdArticleArraytemp as $id) {
     	$IdArticleArray[] = $id[0];
 	}
-    //print_r($IdArticleArray);
-    
     
     
     // tableau d'id de commentaires:  =======================================
@@ -223,11 +217,9 @@ class ArticlesManagerPDO extends ArticlesManager
     	$requete->bindValue(':id_article', (int) $idArticle, \PDO::PARAM_INT);
     	$requete->execute();
     	$NumberComment = $requete->fetchAll();
-    	//print_r( $NumberComment[0]['COUNT(*)'] );
     	$requete->closeCursor();
     	$NumberCommentArray[$idArticle] = $NumberComment[0]['COUNT(*)'];
     }
-    //print_r($NumberCommentArray);
     
     return $NumberCommentArray;
     

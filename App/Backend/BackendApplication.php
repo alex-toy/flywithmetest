@@ -14,27 +14,14 @@ class BackendApplication extends Application
  
   public function run()
   {
-    //echo 'BackendApplication->run()<br>';
-    // $_SESSION['auth'] = false;
-//     	$_SESSION['name'] = "";
-// 		$_SESSION['connected'] = false;
-    
+
     if ($this->user->isAuthenticated())
     {
-      	//echo 'user->isAuthenticated<br>';
-      	//$this->app->user()->UnAuthenticate();
-      	
       	$controller = $this->getController();
-      	
     }
     else
     {
-      //echo 'connexion<br>';
-      // $_SESSION['auth'] = false;
-//     	$_SESSION['name'] = "";
-// 		$_SESSION['connected'] = false;
       $controller = new Modules\Connexion\ConnexionController($this, 'Connexion', 'index');
-      
     }
     
     
@@ -44,11 +31,26 @@ class BackendApplication extends Application
     $this->httpResponse->setPage($controller->page());
     $this->httpResponse->send();
     $this->app->user()->UnAuthenticate();
-    // $_SESSION['auth'] = false;
-//     	$_SESSION['name'] = "";
-// 		$_SESSION['connected'] = false;
-    
-    
-    
+
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

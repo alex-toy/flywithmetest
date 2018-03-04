@@ -18,13 +18,9 @@ class ConnexionController extends BackController
     {
       $login = $request->postData('login');
       $password = $request->postData('password');
-      
-      //echo 'login : ' . $this->app->config()->get('login') . '<br>';
-      //echo 'pass : ' . $this->app->config()->get('passw') . '<br>';
  
       if ($login == $this->app->config()->get('login') && $password == $this->app->config()->get('passw'))
       {
-        //echo 'avant le redirect<br>';
         $_SESSION['name'] = "admin";
 		$_SESSION['connected'] = true;
         $this->app->user()->setAuthenticated(true);
@@ -43,7 +39,6 @@ class ConnexionController extends BackController
   
   public function executeDisconnectAdmin()
   {
-		//echo 'ConnexionController->executeDisconnectAdmin';
 		$this->app->user()->UnAuthenticate();
 		$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
   }
