@@ -19,7 +19,6 @@ class PilotController extends BackController
   
   public function executeConnect(HTTPRequest $request)
   {
-    //echo 'articlesController->executeConnect <br>';
     $this->page->addVar('title', 'connection');
     
     
@@ -28,7 +27,6 @@ class PilotController extends BackController
     
     if ($request->method() == 'POST')
     {
-      //echo 'processForm POST<br>';
       $pilot = new Pilot([
         'pilotname' => $request->postData('pilotname'),
         'email' => "a@a.fr",
@@ -42,11 +40,8 @@ class PilotController extends BackController
     }
     else
     {
-      	//echo 'pas POST<br>';
     	$pilot = new Pilot;
     }
-    
-    //echo 'ici';
     
     $formBuilder = new PilotConnectFormBuilder($pilot);
     $formBuilder->build();
@@ -54,8 +49,6 @@ class PilotController extends BackController
 	
 	
 	if($pilotManager->IsPilot($pilot)){
-	
-		//echo $pilot->pilotname();
 		$_SESSION['name'] = $pilot->pilotname();
 		$_SESSION['connected'] = true;
 		$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
@@ -81,7 +74,6 @@ class PilotController extends BackController
   
   public function executeCreateAccount(HTTPRequest $request)
   {
-    //echo 'articlesController->executeCreateAccount <br>';
     $this->page->addVar('title', 'création d\'un compte');
     
     
@@ -90,7 +82,7 @@ class PilotController extends BackController
     
     if ($request->method() == 'POST')
     {
-      //echo 'processForm POST<br>';
+      
       $pilot = new Pilot([
         'pilotname' => $request->postData('pilotname'),
         'email' => $request->postData('email'),
@@ -104,7 +96,7 @@ class PilotController extends BackController
     }
     else
     {
-      	//echo 'pas POST<br>';
+      	
     	$pilot = new Pilot;
     }
     
@@ -117,17 +109,15 @@ class PilotController extends BackController
 		$formHandler = new FormHandler($form, $pilotManager, $request);
 		if ($formHandler->process() )
 		{
-			//echo '$formHandler->process est terminé';
+			
 			$this->app->user()->setFlash($pilot->pilotname() . ', Bienvenue chez FlyWithMe !!');
 			$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
 		}
 	}
  	else if( !$pilotManager->HasUniqueName($pilot->pilotname()) && !empty($pilot->pilotname()) ){
-		//echo $pilot->pilotname();
 		$this->app->user()->setFlash('Ce nom existe déjà. Essayez avec autre chose !');
 	}
 	else if( !$pilotManager->HasUniqueMail($pilot->email()) && !empty($pilot->email()) ){
-		//echo $pilot->email();
 		$this->app->user()->setFlash('Ce mail existe déjà. Essayez avec autre chose !');
 	}
     
@@ -140,7 +130,6 @@ class PilotController extends BackController
   
   public function executeDisconnect(HTTPRequest $request)
   {
-    //echo 'articlesController->executeDisconnect <br>';
     $this->page->addVar('title', 'connection');
     
     $_SESSION['name'] = "";
