@@ -27,9 +27,9 @@ foreach ($listeArticles as $art)
 {
   echo 
   '<tr>
-  		<td style="text-align:center"><p>' . html_entity_decode($art['depart'])  . '</p></td>
-  		<td style="text-align:center">', html_entity_decode($art['arrivee']), '</td>
-  		<td style="text-align:center">le ', html_entity_decode($art['dateAjout']->format('d/m/Y à H\hi')), '</td>
+  		<td style="text-align:center"><p>' . addslashes($art['depart'])  . '</p></td>
+  		<td style="text-align:center">', addslashes($art['arrivee']), '</td>
+  		<td style="text-align:center">le ', addslashes($art['dateAjout']->format('d/m/Y à H\hi')), '</td>
   		<td style="text-align:center">', ($art['dateAjout'] == $art['dateModif'] ? '-' : 'le '.$art['dateModif']->format('d/m/Y à H\hi')), '</td>
   		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-update-', $art['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/update.png" width="50" alt="Modifier" /></a></td>
   		<td style="text-align:center"><a onclick="deleteArticle(',$art['id'],')" ><img src="/~alexei/FlyWithMeOC2/Web/images/delete.png" width="50" alt="Supprimer" /></a></td>
