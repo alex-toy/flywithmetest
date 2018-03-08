@@ -40,7 +40,7 @@ class HTTPRequest extends ApplicationComponent
  
   public function requestURI()
   {
-    //echo 'dans requestURI : ' . $_SERVER['REQUEST_URI'] . '<br>';
+    
     return $_SERVER['REQUEST_URI'];
   }
 }

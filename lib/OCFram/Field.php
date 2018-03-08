@@ -28,7 +28,6 @@ abstract class Field
     {
       if (!$validator->isValid($this->value))
       {
-        //echo $this->value . '<br>';
         $this->errorMessage = $validator->errorMessage();
         return false;
       }

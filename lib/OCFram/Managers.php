@@ -15,7 +15,6 @@ class Managers
  
   public function getManagerOf($module)
   {
-    //echo 'getManagerOf : '. $module . '<br>';
     if (!is_string($module) || empty($module))
     {
       throw new \InvalidArgumentException('Le module spécifié est invalide');
@@ -24,16 +23,15 @@ class Managers
     if (!isset($this->managers[$module]))
     {
       $manager = '\\Model\\'.$module.'Manager'.$this->api;
-      //echo '$manager : ' . $manager . '<br>';
     
       
       $test = new $manager($this->dao);
-      //echo 'instance de test : ' . get_class($test) . '<br>';
+      
  
       $this->managers[$module] = $test;
     }
  	
- 	//echo 'avant le return<br>';
+ 	
     return $this->managers[$module];
   }
 }

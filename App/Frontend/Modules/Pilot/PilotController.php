@@ -128,7 +128,7 @@ class PilotController extends BackController
   }
   
   
-  public function executeDisconnect(HTTPRequest $request)
+  public function executeDisconnect()
   {
     $this->page->addVar('title', 'connection');
     

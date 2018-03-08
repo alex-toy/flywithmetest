@@ -11,9 +11,8 @@ use \OCFram\FormHandler;
  
 class PilotController extends BackController
 {
-  public function executeIndex(HTTPRequest $request)
+  public function executeIndex()
   {
-    //echo 'PilotController->executeIndex<br>';
     $this->page->addVar('title', 'Gestion des Pilotes');
  
     $pilotmanager = $this->managers->getManagerOf('Pilot');
@@ -21,7 +20,7 @@ class PilotController extends BackController
     $this->page->addVar('listePilotes', $pilotmanager->getAllPilots());
     
     
-    $CountCommentsFromPilotName = $pilotmanager->getCountCommentsFromPilots($pilotname);
+    $CountCommentsFromPilotName = $pilotmanager->getCountCommentsFromPilots();
     $this->page->addVar('CountCommentsFromPilotName', $CountCommentsFromPilotName);
     
     
@@ -73,7 +72,7 @@ class PilotController extends BackController
     $this->processForm($request);
     
     $title_article = $this->managers->getManagerOf('articles')->getUnique($request->getData('id'))->titre();
-    //echo 'title_article : ' . $title_article;
+    
     $this->page->addVar('title_article', $title_article );
     
     $this->page->addVar('title', 'Modification de l\'article');
@@ -86,7 +85,6 @@ class PilotController extends BackController
     
     if ($request->method() == 'POST')
     {
-      echo 'processForm POST<br>';
       $articles = new Articles([
         'titre' => $request->postData('depart'). '-' . $request->postData('arrivee'),
         'depart' => $request->postData('depart'),
@@ -97,22 +95,17 @@ class PilotController extends BackController
  
       if ($request->getExists('id'))
       {
-        //echo 'id : ' . $request->getData('id');
         $articles->setId($request->getData('id'));
       }
     }
     else
     {
-      //echo 'pas POST<br>';
-      // L'identifiant de la news est transmis si on veut la modifier
       if ($request->getExists('id'))
       {
-        //echo '$request->getData(id) : ' . $request->getData('id') . '<br>';
         $articles = $this->managers->getManagerOf('articles')->getUnique($request->getData('id'));
       }
       else
       {
-        //echo 'new Articles';
         $articles = new Articles;
       }
     }

@@ -18,9 +18,9 @@ foreach ($AllCommentsFromPilotName as $comment)
 {
 	echo 
 	'<tr>
-  		<td style="text-align:center">', $comment['title'], '</td>
-  		<td style="text-align:center">', $comment['date'], '</td>
-  		<td style="text-align:center">', $comment['content'], '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['title']), '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['date']), '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['content']), '</td>
   		<td style="text-align:center">', ($comment['validation']==1)?'oui':'non', '</td>
 	</tr>';
 

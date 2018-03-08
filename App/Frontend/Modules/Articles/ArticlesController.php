@@ -15,7 +15,7 @@ use \OCFram\FormHandler;
 class ArticlesController extends BackController
 {
 
-  public function executeListe_articles(HTTPRequest $request)
+  public function executeListe_articles()
   {
     $this->page->addVar('title', 'accueil');
     
@@ -42,7 +42,6 @@ class ArticlesController extends BackController
     $this->page->addVar('listeArticles', $listeArticles);
     
     
-    //bandeau lateral :
     $nombreArticles = $manager->count();
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
@@ -62,7 +61,7 @@ class ArticlesController extends BackController
   
   
   
-  public function executeListe_all_articles(HTTPRequest $request)
+  public function executeListe_all_articles()
   {
     
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
@@ -104,7 +103,6 @@ class ArticlesController extends BackController
  
   public function executeShowArticleById(HTTPRequest $request)
   {
-    //echo 'executeShowArticleById <br>';
     
     $article = $this->managers->getManagerOf('articles')->getUnique($request->getData('id'));
  
@@ -119,10 +117,9 @@ class ArticlesController extends BackController
     $this->page->addVar('validatedcomments', $this->managers->getManagerOf('Comments')->getValidatedComments($article->id()));
     
     
-    //bandeau lateral :
     $manager = $this->managers->getManagerOf('Articles');
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
     ob_start();
@@ -131,14 +128,11 @@ class ArticlesController extends BackController
     $this->page->addVar('bandeau_lateral', $bandeau_lateral);
  
 
-    
-    // On ajoute la variable $nombreArticles à la vue.
+
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
-    $this->page->addVar('nombreArticles', $nombreArticles);
     
-	$id = $request->getData('id');
-	//echo 'id : ' . $id;
+    $this->page->addVar('nombreArticles', $nombreArticles);
+
     
   }
  
@@ -147,15 +141,10 @@ class ArticlesController extends BackController
  
   public function executeInsertComment(HTTPRequest $request)
   {
-    //echo 'executeInsertComment <br>';
-    // Si le formulaire a été envoyé.
     if ($request->method() == 'POST')
     {
-      //echo 'POST<br>';
       $comment = new Comment([
         'id_article' => $request->getData('id_article'),
-        //'id_pilot' => 1,
-        //'id_pilot' => $request->getData('id_pilot'),
         'auteur' => $_SESSION['name'],
         'contenu' => $request->postData('contenu'),
         'validated' => false
@@ -164,7 +153,6 @@ class ArticlesController extends BackController
     }
     else
     {
-      //echo 'new comment <br>';
       $comment = new Comment;
     }
  
@@ -177,7 +165,6 @@ class ArticlesController extends BackController
  
     if ($formHandler->process())
     {
-      //echo '$formHandler->process() : <br>'; 
       $this->app->user()->setFlash(ucfirst($_SESSION['name']) . ', votre commentaire va être prochainement validé ! Merci !');
  
       $this->app->httpResponse()->redirect('articles-'.$request->getData('id_article').'.html');
@@ -192,7 +179,6 @@ class ArticlesController extends BackController
      //bandeau lateral :
     $manager = $this->managers->getManagerOf('Articles');
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
     ob_start();
@@ -201,17 +187,12 @@ class ArticlesController extends BackController
     $this->page->addVar('bandeau_lateral', $bandeau_lateral);
      
 	
-	//Variable pour le titre de l'article à commenter :
     $id_article = $request->getData('id_article');
-    //echo 'id_article : ' . $id_article . '<br>';
     $titre_article = $manager->getTitleById($id_article);
-	//echo 'titre_article : ' . $titre_article[0];
 	$this->page->addVar('title_article', $titre_article[0]);
     
     
-    // On ajoute la variable $nombreArticles à la vue.
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
     $this->page->addVar('nombreArticles', $nombreArticles);
     
     
@@ -221,61 +202,41 @@ class ArticlesController extends BackController
 
   public function executeSearch(HTTPRequest $request)
   {
-    //echo 'articlesController->executeSearch <br>';
-    
-    
-    // Si le formulaire a été envoyé.
     if ($request->method() == 'POST')
     {
-		//echo 'POST<br>';
-      
-		//echo 'recherche des départs<br>';
 		$manager = $this->managers->getManagerOf('Articles');
 		$list_departures = $manager->getDepartures();
 		$this->page->addVar('departures', $list_departures);
-		//print_r($list_departures);
 		
-		//echo 'recherche des arrivées<br>';
+		
+		
 		$list_arrivals = $manager->getArrivals();
 		$this->page->addVar('arrivals', $list_arrivals);
-		//print_r($list_arrivals);
+		
       
-		// trouver les aricles correspondant au départ et a l'arrivée :      
-		//echo 'depart : ' . $_POST['depart'] . '<br>';
-		//echo 'arrivée : ' . $_POST['arrivee'] . '<br>';
 		$idArticleCorrespondant = $manager->getArticlesByDepartureAndArrival($_POST['depart'], $_POST['arrivee']);
-		//print_r($idArticleCorrespondant);
 		$article = [];
 		foreach($idArticleCorrespondant as $id)
 		{
-			//echo $id;
 			$article[] = $manager->getUnique($id);
-			
 		}
-		//print_r($article);
 		$this->page->addVar('article', $article);
       
     }
     else
     {
-		//echo 'recherche des départs<br>';
 		$manager = $this->managers->getManagerOf('Articles');
 		$list_departures = $manager->getDepartures();
 		$this->page->addVar('departures', $list_departures);
-		//print_r($list_departures);
 		
-		//echo 'recherche des arrivées<br>';
 		$list_arrivals = $manager->getArrivals();
 		$this->page->addVar('arrivals', $list_arrivals);
-		//print_r($list_arrivals);
     }
  
-    
 
-    //bandeau lateral :
     $manager = $this->managers->getManagerOf('Articles');
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
     ob_start();
@@ -287,20 +248,14 @@ class ArticlesController extends BackController
   }
   
   
-  public function executeWhoamI(HTTPRequest $request)
+  public function executeWhoamI()
   {
-    //echo 'articlesController->executeWhoamI <br>';
-    
-    //variable pour le titre du bandeau :
+
     $this->page->addVar('title', 'qui je suis?');
     
-    //$test = this->SideStrip();
-    
-    
-    //bandeau lateral :
     $manager = $this->managers->getManagerOf('Articles');
     $nombreArticles = $manager->count();
-    //echo 'nombreArticles : ' . $nombreArticles . '<br>';
+    
     $this->page->addVar('nombreArticles', $nombreArticles);
     $listeAllTitle = $manager->getAllTitle();
     ob_start();

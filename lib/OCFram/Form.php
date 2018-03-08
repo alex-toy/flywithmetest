@@ -13,16 +13,14 @@ class Form
  
   public function add(Field $field)
   {
-    //echo 'Form->add';
-    //echo $field->name(); 
+    
     $attr = $field->name(); // On récupère le nom du champ.
-    //echo $this->entity->$attr();
+   
     
     $field->setValue($this->entity->$attr()); // On assigne la valeur correspondante au champ.
  
     $this->fields[] = $field; // On ajoute le champ passé en argument à la liste des champs.
     
-    //print_r($this->fields);
     return $this;
   }
  
@@ -30,7 +28,6 @@ class Form
   {
     $view = '';
  
-    // On génère un par un les champs du formulaire.
     foreach ($this->fields as $field)
     {
       $view .= $field->buildWidget().'<br />';

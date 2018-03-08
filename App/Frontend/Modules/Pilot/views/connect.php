@@ -3,7 +3,7 @@
 				'<div class="row">
 					<div class="col-sm-8"></div>
 						<div class="col-sm-3 encart">
-							<p style="text-align: center;"  >', $_SESSION['name'] ,', vous devez vous déconnecter avant de vous connecter en admin !</p>
+							<p style="text-align: center;"  >', htmlspecialchars($_SESSION['name']) ,', vous devez vous déconnecter avant de vous connecter en admin !</p>
 						</div>
 				</div>';
 				}

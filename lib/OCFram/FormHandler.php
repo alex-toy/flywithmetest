@@ -16,12 +16,9 @@ class FormHandler
  
   public function process()
   {
-    //echo 'FormHandler->process<br>';
     
     if($this->request->method() == 'POST' && $this->form->isValid())
     {
-      //echo 'si formulaire valide, insertion en bdd<br>';
-      echo get_class($this->form->entity());
       $this->manager->save($this->form->entity());
  
       return true;

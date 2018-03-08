@@ -17,7 +17,6 @@ class Pilot extends Entity
 
   public function isValid()
   {
-    //echo 'Pilot->isValid <br>';
     return !(empty($this->pilotname) || empty($this->email) );
   }
   
@@ -59,17 +58,15 @@ class Pilot extends Entity
   
   
  
-  // GETTERS //
+  
  
   public function pilotname()
   {
-    //echo 'essai : ' . $this->pilotname . '<br>';
     return $this->pilotname;
   }
  
   public function email()
   {
-    //echo 'essai : ' . $this->email . '<br>';
     return $this->email;
   }
  

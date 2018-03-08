@@ -19,12 +19,11 @@ class Page extends ApplicationComponent
  
   public function getGeneratedPage()
   {
-    //echo 'content file : ' . $this->contentFile . '<br>';
+    
     if (!file_exists($this->contentFile))
     {
       throw new \RuntimeException('La vue spécifiée n\'existe pas');
     }
-    //echo 'content file : ' . $this->contentFile . '<br>';
     
     
     $user = $this->app->user();

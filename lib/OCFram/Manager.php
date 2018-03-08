@@ -7,7 +7,7 @@ abstract class Manager
  
   public function __construct($dao)
   {
-    //echo 'dans le manager<br>';
+    
     $this->dao = $dao;
   }
 }

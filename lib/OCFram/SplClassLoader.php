@@ -148,7 +148,6 @@ class SplClassLoader
       }
       $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
       
-      //echo '<br>filename : ' . $fileName;
  
       require ($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
     }

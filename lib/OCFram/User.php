@@ -27,7 +27,6 @@ class User
  
   public function isAuthenticated()
   {
-    //echo '$_SESSION[auth] : '. $_SESSION['auth'] .'<br>';
     return isset($_SESSION['auth']) && $_SESSION['auth'] === true;
   }
  

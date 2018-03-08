@@ -11,7 +11,6 @@ abstract class BackController extends ApplicationComponent
  
   public function __construct(Application $app, $module, $action)
   {
-    //echo 'dans le constructeur du backcontroller - action : ' . $action . '<br>';
     
     parent::__construct($app);
  
@@ -28,8 +27,6 @@ abstract class BackController extends ApplicationComponent
   public function execute()
   {
     $method = 'execute'.ucfirst($this->action);
-    
-    //echo 'methode : ' .  $method . '<br>';
  
     if (!is_callable([$this, $method]))
     {
@@ -70,12 +67,8 @@ abstract class BackController extends ApplicationComponent
     {
       throw new \InvalidArgumentException('La vue doit être une chaine de caractères valide');
     }
-    
-    //echo 'vue : ' . $view . '<br>';
  
     $this->view = $view;
-    
-    //echo __DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php' . '<br>';
  
     $this->page->setContentFile(__DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php');
     

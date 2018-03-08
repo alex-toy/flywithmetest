@@ -27,7 +27,7 @@ foreach ($validatedcomments as $comment)
 ?>
 <section class="commentaire">
   <legend>
-    Posté par <strong><?= htmlspecialchars($comment['auteur']) ?></strong> le <?= $comment['date']->format('d/m/Y à H\hi') ?>
+    Posté par <strong><?= htmlspecialchars($comment['auteur']) ?></strong> le <?= htmlspecialchars($comment['date']->format('d/m/Y à H\hi')) ?>
   </legend>
   <p><?= nl2br(htmlspecialchars($comment['contenu'])) ?></p>
 </section>
@@ -36,9 +36,9 @@ foreach ($validatedcomments as $comment)
 }
 ?>
  
-<?php  if($_SESSION['connected']){ 
-	//echo $_SESSION['name'];
-	echo '<a class="btn btn-primary" href="commentaire-', $article['id'], '.html">Ajouter un commentaire</a></p>';
+<?php  if(htmlspecialchars($_SESSION['connected'])){ 
+	
+	echo '<a class="btn btn-primary" href="commentaire-', htmlspecialchars($article['id']), '.html">Ajouter un commentaire</a></p>';
 }
 else{
 	echo '<a disabled class="btn btn-primary">Ajouter un commentaire</a></p>';

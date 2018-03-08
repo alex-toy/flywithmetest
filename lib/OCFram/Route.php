@@ -10,7 +10,7 @@ class Route
   protected $varsNames;
   protected $vars = [];
  
-  public function __construct($url, $module, $action, array $varsNames, $comp)
+  public function __construct($url, $module, $action, array $varsNames)
   {
     $this->setUrl($url);
     $this->setModule($module);
@@ -27,19 +27,19 @@ class Route
   {  
     $regex = $this->url;
     $regex = str_replace( '/' , '\/' , $regex);
-    //echo 'test replace : ' . $regex . '<br>';
+    
     $regex = '/^' . $regex . '$/';
     
-    //echo 'url : ' . $url . '<br>';
+   
 
     if (preg_match($regex, $url, $matches))
     {
-      //echo 'matches : ' . $matches[0] . '<br>';
+      
       return $matches;
     }
     else
     {
-      //echo 'dans le false <br>';
+      
       return false;
     }
   }

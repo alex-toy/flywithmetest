@@ -36,7 +36,6 @@ class TextField extends Field
     
     $widget.='</textarea>';
     
-    //echo $widget;
  
     return $widget;
   }

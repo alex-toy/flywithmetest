@@ -5,8 +5,6 @@ class PDOFactory
 {
   public static function getMysqlConnexion()
   {
-    //echo 'getMysqlConnexion : ';
-    
     
     $db = new \PDO('mysql:host=localhost;dbname=news;charset=utf8', 'root', 'root');
 

@@ -20,10 +20,11 @@ class ContactController extends BackController
     
     if ($request->method() == 'POST')
     {
+		if($_POST['name']){ $name = $_POST['name'];}
+		if($_POST['email']){ $email_from = $_POST['email'];}
+		if($_POST['message']){ $message = htmlspecialchars($_POST['message']);}
 		
-		$name = $_POST['name'];
-		$email_from = $_POST['email'];
-		$message = htmlspecialchars($_POST['message']);
+
 		//$message = html_entity_decode($_POST['message']);
 	
 
@@ -55,7 +56,7 @@ class ContactController extends BackController
 
   
   
-  public function executeLink(HTTPRequest $request)
+  public function executeLink()
   {
     $this->page->addVar('title', 'liens');
   }

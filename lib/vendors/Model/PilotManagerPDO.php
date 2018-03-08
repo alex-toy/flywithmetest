@@ -23,8 +23,6 @@ class PilotManagerPDO extends PilotManager
   
   public function HasUniqueName($name)
   {
-    //echo 'PilotManagerPDO->HasUniqueName<br>';
-    //echo $name;
 
     $sql = 'SELECT pilotname FROM pilot;';
     $requete = $this->dao->prepare($sql);
@@ -38,8 +36,6 @@ class PilotManagerPDO extends PilotManager
 	}
     $requete->closeCursor();
     
-    //print_r($array_name);
-    //echo $array_name[0];
     if(in_array($name, $array_name)) { return false; }
    	else { return true; }
     
@@ -49,10 +45,6 @@ class PilotManagerPDO extends PilotManager
   
   public function HasUniqueMail($email)
   {
-    //echo 'PilotManagerPDO->HasUniqueMail<br>';
-    //echo $email;
-    
-
     $sql = 'SELECT email FROM pilot;';
     $requete = $this->dao->prepare($sql);
     $requete->execute();
@@ -65,8 +57,7 @@ class PilotManagerPDO extends PilotManager
 	}
     $requete->closeCursor();
     
-    //print_r($array_mail);
-    //echo $array_mail[0];
+
     if(in_array($email, $array_mail)) { return false; }
    	else { return true; }
     
@@ -76,15 +67,12 @@ class PilotManagerPDO extends PilotManager
   
   public function getAllPilots()
   {
-    //echo 'PilotManagerPDO->getAllPilots<br>';
-
     $sql = 'SELECT * FROM pilot;';
     $requete = $this->dao->prepare($sql);
     $requete->execute();
     $array_name_temp = $requete->fetchAll();
     $requete->closeCursor();
     
-    //print_r($array_name_temp);
     return $array_name_temp;
     
   }
@@ -93,7 +81,6 @@ class PilotManagerPDO extends PilotManager
   
   public function getAllCommentsFromPilots($pilotname)
   {
-    //echo 'PilotManagerPDO->getAllCommentsFromPilots<br>';
 
     $sql = 'SELECT comments.contenu AS content, article.titre AS title, comments.validated AS validation, comments.date AS date FROM comments INNER JOIN article ON comments.id_article=article.id WHERE comments.auteur = :pilotname;';
 
@@ -103,17 +90,15 @@ class PilotManagerPDO extends PilotManager
     $array_comment_temp = $requete->fetchAll();
     $requete->closeCursor();
     
-    //print_r($array_comment_temp);
     return $array_comment_temp;
     
   }
   
   
   
-  public function getCountCommentsFromPilots($pilotname)
+  public function getCountCommentsFromPilots()
   {
-    //echo 'PilotManagerPDO->getCountCommentsFromPilots<br>';
-    
+
     $AllPilotNames = $this->getAllPilots();
     
     $name_number_array = [];
@@ -125,9 +110,6 @@ class PilotManagerPDO extends PilotManager
     	$numberComments = $requete->fetchAll();
     	$requete->closeCursor();
     	
-    	//echo  $numberComments[0][0];
-    	//print_r($numberComments);
-    	
     	$name_number_array[$AllPilotNames[$i]['pilotname']] = $numberComments[0][0];
 	}
 		return $name_number_array;
@@ -137,8 +119,6 @@ class PilotManagerPDO extends PilotManager
   
   public function deletePilot($id)
   {
-    //echo 'PilotManagerPDO->deletePilot<br>';
-    
     $sql = 'DELETE FROM pilot WHERE id = :id;';
     $requete = $this->dao->prepare($sql);
 	$requete->bindValue(':id', $id);
@@ -151,8 +131,6 @@ class PilotManagerPDO extends PilotManager
   
   public function IsPilot(Pilot $pilot)
   {
-    //echo 'PilotManagerPDO->IsPilot<br>';
-    
     $pilotname = $pilot->pilotname();
     $pwrd = $pilot->pwrd();
 
@@ -164,7 +142,6 @@ class PilotManagerPDO extends PilotManager
     $array_name_temp = $requete->fetchAll();
     $requete->closeCursor();
      
-    //print_r($array_name_temp);
     return !empty($array_name_temp);
     
   }
@@ -202,9 +179,6 @@ class PilotManagerPDO extends PilotManager
       $article->setDateAjout(new \DateTime($article->dateAjout()));
       $article->setDateModif(new \DateTime($article->dateModif()));
  
-      //echo 'id : ' . $id . '<br>';
-      //echo 'auteur de l\'article : ' . $article['auteur'] . '<br>';
-      //echo 'date ajout de l\'article : ' . $article['dateAjout']->format('d-m-Y') . '<br>';
       return $article;
     }
  
@@ -227,16 +201,7 @@ class PilotManagerPDO extends PilotManager
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
 }
 

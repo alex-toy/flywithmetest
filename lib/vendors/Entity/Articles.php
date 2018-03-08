@@ -22,7 +22,6 @@ class Articles extends Entity
  
   public function isValid()
   {
-    //echo 'Articles->titre : ' . $this->arrivee . '<br>';
     return !(empty($this->depart) || empty($this->arrivee) || empty($this->contenu));
   }
  
@@ -46,8 +45,6 @@ class Articles extends Entity
   public function setDateModif(\DateTime $dateModif)
   {
     $this->dateModif = $dateModif;
-    //echo 'dateModif : ' . $this->dateModif . '<br>';
-    
   }
   
   public function setDepart($d)
@@ -58,7 +55,6 @@ class Articles extends Entity
     }
  
     $this->depart = $d;
-    //echo 'depart : ' . $this->depart . '<br>';
   }
   
   public function setArrivee($a)
@@ -69,7 +65,6 @@ class Articles extends Entity
     }
  
     $this->arrivee = $a;
-    //echo 'arrivee : ' . $this->arrivee . '<br>';
   }
   
   public function setTitre($titre)
@@ -84,7 +79,7 @@ class Articles extends Entity
   
   
  
-  // GETTERS //
+  
  
   public function auteur()
   {

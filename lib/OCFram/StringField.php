@@ -13,7 +13,7 @@ class StringField extends Field
     {
       $widget .= $this->errorMessage.'<br />';
     }
- 	//echo $this->label;
+ 	
     $widget .= '<label>'.$this->label.' : </label><br><input type="text" name="'.$this->name.'"' ;
  
     if (!empty($this->value))
@@ -28,7 +28,7 @@ class StringField extends Field
     
     $widget .= ' />';
     
-    //echo $widget;
+    
     
     return $widget;
   }

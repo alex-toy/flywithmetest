@@ -38,9 +38,9 @@ foreach ($listeComments as $comment)
 {
   echo 
 	'<tr>
-  		<td style="text-align:center">', $comment['auteur'], '</td>
-  		<td style="text-align:center">', $comment['contenu'], '</td>
-  		<td style="text-align:center">', $comment['date'], '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['auteur']), '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['contenu']), '</td>
+  		<td style="text-align:center">', htmlspecialchars($comment['date']), '</td>
 		<td style="text-align:center"><INPUT onclick="GatherIdsToValidate(',$comment['id'],')" type="checkbox" name="choix1" value="1"></td>
 		<td style="text-align:center"><INPUT onclick="GatherIdsToDelete(',$comment['id'],')" type="checkbox" name="choix1" value="1"></td>
 		
@@ -119,20 +119,15 @@ function GatherIdsToDelete(idComment) {
 
 function ValidateGroup(idArticle) {
 	
-	//alert(idArticle);
-	//alert(CommentsIdsToBeValidated_temp);
-	
 	var CommentsIdsToBeValidated = "[";
 
 	for(id in CommentsIdsToBeValidated_temp) {CommentsIdsToBeValidated += CommentsIdsToBeValidated_temp[id]+',';}
 	CommentsIdsToBeValidated = CommentsIdsToBeValidated.substring(0,CommentsIdsToBeValidated.length-1)
 	CommentsIdsToBeValidated = CommentsIdsToBeValidated.concat(']');
 	
-	//alert(CommentsIdsToBeValidated);
-	
 	if (confirm("êtes vous sûr de vouloir valider ces commentaires ?")) { 
 		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-validate-" + CommentsIdsToBeValidated + "-" + idArticle.trim()  + ".html"; 
-		//alert(redirect);
+		
 		document.location.href=redirect; 	
 	}
 }

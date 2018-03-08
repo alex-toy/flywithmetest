@@ -18,7 +18,6 @@ class PilotConnectFormBuilder extends FormBuilder
   
   public function build()
   {
-    //echo 'PilotFormBuilder->build<br>';
     
     $pilotname = new StringField([
         'label' => 'nom',
