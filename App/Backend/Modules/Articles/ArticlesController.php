@@ -267,7 +267,6 @@ class ArticlesController extends BackController
     $id_article = $request->getData('id_article');
     
     foreach ($CommentsIdsToBeValidatedArray as $CommentsId) {
-    	echo $CommentsId . '<br>';
     	$this->managers->getManagerOf('Comments')->validateCommentWithId($CommentsId);
 	}
     

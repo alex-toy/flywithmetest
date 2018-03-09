@@ -117,11 +117,11 @@ class PilotManagerPDO extends PilotManager
   
   
   
-  public function deletePilot($id)
+  public function deletePilot($idPilot)
   {
     $sql = 'DELETE FROM pilot WHERE id = :id;';
     $requete = $this->dao->prepare($sql);
-	$requete->bindValue(':id', $id);
+	$requete->bindValue(':id', $idPilot);
 	$requete->execute();
 	$requete->closeCursor();
     
@@ -157,18 +157,18 @@ class PilotManagerPDO extends PilotManager
  
  
  
-  public function delete($id)
+  public function delete($idPilot)
   {
-    $this->dao->exec('DELETE FROM article WHERE id = '.(int) $id);
+    $this->dao->exec('DELETE FROM article WHERE id = '.(int) $idPilot);
   }
  
 
   
  
-  public function getUnique($id)
+  public function getUnique($idPilot)
   {
     $requete = $this->dao->prepare('SELECT id, titre, depart, arrivee, contenu, dateAjout, dateModif FROM article WHERE id = :id');
-    $requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+    $requete->bindValue(':id', (int) $idPilot, \PDO::PARAM_INT);
     $requete->execute();
  
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Articles');

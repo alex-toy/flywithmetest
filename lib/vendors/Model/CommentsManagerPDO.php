@@ -18,9 +18,9 @@ class CommentsManagerPDO extends CommentsManager
     $comment->setId($this->dao->lastInsertId());
   }
  
-  public function delete($id)
+  public function delete($idComment)
   {
-    $this->dao->exec('DELETE FROM comments WHERE id = '.(int) $id);
+    $this->dao->exec('DELETE FROM comments WHERE id = '.(int) $idComment);
   }
  
   public function deleteFromNews($id_article)
@@ -35,13 +35,13 @@ class CommentsManagerPDO extends CommentsManager
       throw new \InvalidArgumentException('L\'identifiant de la news passé doit être un nombre entier valide');
     }
  
-    $q = $this->dao->prepare('SELECT id, id_article, auteur, contenu, date FROM comments WHERE id_article = :id_article');
-    $q->bindValue(':id_article', $id_article, \PDO::PARAM_INT);
-    $q->execute();
+    $query = $this->dao->prepare('SELECT id, id_article, auteur, contenu, date FROM comments WHERE id_article = :id_article');
+    $query->bindValue(':id_article', $id_article, \PDO::PARAM_INT);
+    $query->execute();
  
-    $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
  
-    $comments = $q->fetchAll();
+    $comments = $query->fetchAll();
  
     foreach ($comments as $comment)
     {
@@ -108,15 +108,15 @@ class CommentsManagerPDO extends CommentsManager
     $q->execute();
   }
  
-  public function get($id)
+  public function get($idComment)
   {
-    $q = $this->dao->prepare('SELECT * FROM comments WHERE id = :id');
-    $q->bindValue(':id', (int) $id, \PDO::PARAM_INT);
-    $q->execute();
+    $query = $this->dao->prepare('SELECT * FROM comments WHERE id = :id');
+    $query->bindValue(':id', (int) $idComment, \PDO::PARAM_INT);
+    $query->execute();
  
-    $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
  
-    return $q->fetch();
+    return $query->fetch();
   }
   
   public function validateCommentWithId($id_comment)

@@ -1,7 +1,8 @@
 <div class="row">
   
-  	<?php if ($user->hasFlash()) echo '<div class="col-sm-1"></div><div class="encart col-sm-10" style="text-align: center;">', $user->getFlash(), '</div>'; ?>
-  
+  	<?php if ($user->hasFlash()){ ?>  
+  		<div class="col-sm-1"></div><div class="encart col-sm-10" style="text-align: center;"><?=  $user->getFlash() ?></div>
+  	<?php } ?>  
   
   
   <div class="col-sm-1"></div>

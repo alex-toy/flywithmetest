@@ -1,5 +1,5 @@
 <section class="encart">
-<h3>Commentaires de <?php echo $pilotname; ?></h3>
+<h3>Commentaires de <?= $pilotname ?></h3>
 </section>
 
 
@@ -16,14 +16,15 @@
 <?php
 foreach ($AllCommentsFromPilotName as $comment)
 {
-	echo 
-	'<tr>
-  		<td style="text-align:center">', htmlspecialchars($comment['title']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['date']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['content']), '</td>
-  		<td style="text-align:center">', ($comment['validation']==1)?'oui':'non', '</td>
-	</tr>';
+?>
+	<tr>
+  		<td style="text-align:center"><?= $comment['title'] ?></td>
+  		<td style="text-align:center"><?= $comment['date'] ?></td>
+  		<td style="text-align:center"><?= $comment['content'] ?></td>
+  		<td style="text-align:center"><?= ($comment['validation']==1)?'oui':'non' ?></td>
+	</tr>
 
+<?php
 }
 ?>
 </tbody></table>

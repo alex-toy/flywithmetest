@@ -214,9 +214,9 @@ class ArticlesController extends BackController
 		$this->page->addVar('arrivals', $list_arrivals);
 		
       
-		$idArticleCorrespondant = $manager->getArticlesByDepartureAndArrival($_POST['depart'], $_POST['arrivee']);
+		$idArtCorrespondant = $manager->getArticlesByDepartureAndArrival($_POST['depart'], $_POST['arrivee']);
 		$article = [];
-		foreach($idArticleCorrespondant as $id)
+		foreach($idArtCorrespondant as $id)
 		{
 			$article[] = $manager->getUnique($id);
 		}

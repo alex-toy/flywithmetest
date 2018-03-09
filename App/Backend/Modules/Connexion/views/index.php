@@ -1,15 +1,14 @@
-<?php if ($_SESSION['connected'] == true && $_SESSION['name'] != 'admin' ){ 
-				echo 
-				'<div class="row">
-					<div class="col-sm-8"></div>
-						<div class="col-sm-3 encart">
-							<p style="text-align: center;"  >', $_SESSION['name'] ,', vous devez vous déconnecter avant de vous connecter en admin !</p>
-						</div>
-				</div>';
-				}
-				else { 
-				echo 
-				'<div class="row">
+<?php if ($_SESSION['connected'] == true && $_SESSION['name'] != 'admin' ){ ?>
+	<div class="row">
+		<div class="col-sm-8"></div>
+			<div class="col-sm-3 encart">
+				<p style="text-align: center;"  ><?= $_SESSION['name'] ?>, vous devez vous déconnecter avant de vous connecter en admin !</p>
+			</div>
+	</div>
+	
+<?php }else { ?>
+
+<div class="row">
   
   <div class="col-sm-3"></div>
   
@@ -32,8 +31,9 @@
   
   
   
-</div>';
+</div>
 
+<?php 
 }
 ?>
 

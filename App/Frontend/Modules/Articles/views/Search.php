@@ -11,8 +11,10 @@
 		<select name="depart">
 		<?php   
 		foreach ($departures as $value)
-		{    
-			echo "<option value=" . $value . ">"  . $value .  "</option>";
+		{
+		?>
+			<option value="<?= $value ?>"><?=  $value ?></option>
+		<?php
 		}
 		?>		
 		</select>
@@ -25,8 +27,10 @@
 		<select name="arrivee">
 		<?php
 		foreach ($arrivals as $value)
-		{    
-			echo "<option value=" . $value . ">"  . $value .  "</option>";
+		{
+		?>
+			<option value="<?= $value ?>"><?=  $value ?></option>
+		<?php
 		}
 		?>
 		</select>
