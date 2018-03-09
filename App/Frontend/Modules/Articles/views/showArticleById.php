@@ -20,8 +20,6 @@ if (empty($comments))
 <?php
 }
 
-
-
 foreach ($validatedcomments as $comment)
 {
 ?>
@@ -34,16 +32,17 @@ foreach ($validatedcomments as $comment)
 
 <?php
 }
-?>
- 
-<?php  if(htmlspecialchars($_SESSION['connected'])){ 
+if(htmlspecialchars($_SESSION['connected'])){ ?>
 	
-	echo '<a class="btn btn-primary" href="commentaire-', htmlspecialchars($article['id']), '.html">Ajouter un commentaire</a></p>';
+	<a class="btn btn-primary" href="commentaire-<?= $article['id'] ?>.html">Ajouter un commentaire</a></p>
+<?php 
 }
 else{
-	echo '<a disabled class="btn btn-primary">Ajouter un commentaire</a></p>';
-}
+?>
+	<a disabled class="btn btn-primary">Ajouter un commentaire</a></p>
 
+<?php
+}
 ?>
 
 

@@ -27,11 +27,17 @@ foreach ($listeArticles as $art)
 {
 ?> 
   <tr>
-  		<td style="text-align:center"><p> <?= $art['depart'] ?>    </p></td>
-  		<td style="text-align:center"> <?=  $art['arrivee']) ?>  </td>
+  		<td style="text-align:center"> <?= $art['depart'] ?> </td>
+  		<td style="text-align:center"> <?=  $art['arrivee'] ?>  </td>
   		
-		
+		<td style="text-align:center">le <?= $art['dateAjout']->format('d/m/Y à H\hi') ?> </td>
+  		<td style="text-align:center"> <?= ($art['dateAjout'] == $art['dateModif'] ? '-' : 'le ' . $art['dateModif']->format('d/m/Y à H\hi')) ?> </td>
+  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-update-<?= $art['id'] ?>.html"><img src="/~alexei/FlyWithMeOC2/Web/images/update.png" width="50" alt="Modifier" /></a></td>
+  		<td style="text-align:center"><a onclick="deleteArticle(<?= $art['id'] ?>)" ><img src="/~alexei/FlyWithMeOC2/Web/images/delete.png" width="50" alt="Supprimer" /></a></td>
 
+  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/articles-list-comment-<?= $art['id'] ?>.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
+ 		<td style="text-align:center"><a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/articles-list-unvalidated-comment-<?= $art['id'] ?>.html"><?= $NumberUnvalidatedComments[$art['id']] ?></a></td>
+ 	
   </tr>
 <?php
 }

@@ -241,7 +241,6 @@ class ArticlesController extends BackController
     $id_article = $request->getData('id_article');
     
     foreach ($CommentsIdsToBeDeletedArray as $CommentsId) {
-    	echo $CommentsId . '<br>';
     	$this->managers->getManagerOf('Comments')->delete($CommentsId);
 	}
     

@@ -1,27 +1,23 @@
-<?php if ($_SESSION['connected'] == false){ 
+<?php if ($_SESSION['connected'] == false){  ?>
 
-echo
-
-'<section class="encart">
+<section class="encart">
 <h2>Se créer un compte</h2>
 <form action="" method="post">
-  <p>',
+  <p>
     
-    $form,
+  <?= $form ?>
  
-    '<br><input class="btn btn-primary" type="submit" value="Envoyer la demande de création de compte" />
+    <br><input class="btn btn-primary" type="submit" value="Envoyer la demande de création de compte" />
   </p>
 </form>
-</section>';
+</section>
 
+<?php
 }else{
+ ?>
 
-echo '<section class="encart">Vous êtes déjà connecté</section>';
-
-
-
+<section class="encart">Vous êtes déjà connecté</section>
 
 
-
-
-}
+<?php
+}?>

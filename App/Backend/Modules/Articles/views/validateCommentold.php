@@ -2,7 +2,7 @@
 if($nombreComments == 0)
 {
 ?>
-<h2 style="text-align:left">Il n'y a actuellement aucun commentaires sur l'article <?= $title_article[0] ?>.</h2>
+<h2 style="text-align:left">Il n'y a actuellement aucun commejougougougntaires sur l'article <?= $title_article[0] ?>.</h2>
 <?php
 }
 else if($nombreComments == 1)
@@ -30,14 +30,15 @@ else if($nombreComments > 1)
 <?php
 foreach ($listeComments as $comment)
 {
-  echo 
-	'<tr>
-  		<td style="text-align:center">', htmlspecialchars($comment['auteur']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['contenu']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['date']), '</td>
-  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-', $comment['id'], '.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
+?>
+  <tr>
+  		<td style="text-align:center"><?= $comment['auteur'] ?></td>
+  		<td style="text-align:center"><?= $comment['contenu'] ?></td>
+  		<td style="text-align:center"><?= $comment['date']) ?></td>
+  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-<?= $comment['id'] ?>.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
 
-	</tr>';
+	</tr>
+<?php
 }
 ?>
 </tbody></table>

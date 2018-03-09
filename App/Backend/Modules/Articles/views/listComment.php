@@ -40,13 +40,14 @@ else if($nombreComments > 1)
 <?php
 foreach ($listeComments as $comment)
 {
-  echo 
-	'<tr>
-  		<td style="text-align:center">', $comment['auteur'], '</td>
-  		<td style="text-align:center">', $comment['contenu'], '</td>
-  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-', $comment['id'],'-', $id_article ,'.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
+?> 
+  <tr>
+  		<td style="text-align:center"><?= $comment['auteur'] ?></td>
+  		<td style="text-align:center"><?=  $comment['contenu'] ?></td>
+  		<td style="text-align:center"><a href="/~alexei/FlyWithMeOC2/Web/admin/comment-delete-<?= $comment['id'] ?>-<?=  $id_article  ?>.html"><img src="/~alexei/FlyWithMeOC2/Web/images/listcomment.png" width="50" alt="Supprimer" /></a></td>
 
-	</tr>';
+	</tr>
+<?php
 }
 ?>
 </tbody></table>

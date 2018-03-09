@@ -63,25 +63,25 @@
 	<div class="col-md-9">
 		
 		<!-- bienvenue de connexion ================================================== -->
-		<?php if ($_SESSION['connected'] == true && $_SESSION['name'] == "admin"){ 
-				echo 
-				'<div class="row">
+		<?php if ($_SESSION['connected'] == true && $_SESSION['name'] == "admin"){ ?>
+				<div class="row">
 					<div class="col-sm-8"></div>
 						<div class="col-sm-3 encart">
-							<p style="text-align: center;"  >Bienvenue ', $_SESSION['name'] ,' !</p>
+							<p style="text-align: center;"  >Bienvenue <?= $_SESSION['name'] ?> !</p>
 							<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/admin/DisconnectAdmin/">deconnexion</a></p>
 						</div>
-				</div>';
+				</div>
+				<?php
 				}
-				else if ($_SESSION['connected'] == true){ 
-				echo 
-				'<div class="row">
+				else if ($_SESSION['connected'] == true){  ?>
+				<div class="row">
 					<div class="col-sm-8"></div>
 						<div class="col-sm-3 encart">
-							<p style="text-align: center;"  >Bienvenue ', ucfirst($_SESSION['name']) ,' !</p>
+							<p style="text-align: center;"  >Bienvenue <?= ucfirst($_SESSION['name'])  ?> !</p>
 							<a class="btn btn-primary" href="/~alexei/FlyWithMeOC2/Web/disconnect">deconnexion</a></p>
 						</div>
-				</div>';
+				</div>
+				<?php
 				}
 				?>
 		

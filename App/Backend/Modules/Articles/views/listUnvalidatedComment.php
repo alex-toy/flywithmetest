@@ -36,21 +36,22 @@ else if($nombreComments > 1)
 <?php
 foreach ($listeComments as $comment)
 {
-  echo 
-	'<tr>
-  		<td style="text-align:center">', htmlspecialchars($comment['auteur']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['contenu']), '</td>
-  		<td style="text-align:center">', htmlspecialchars($comment['date']), '</td>
-		<td style="text-align:center"><INPUT onclick="GatherIdsToValidate(',$comment['id'],')" type="checkbox" name="choix1" value="1"></td>
-		<td style="text-align:center"><INPUT onclick="GatherIdsToDelete(',$comment['id'],')" type="checkbox" name="choix1" value="1"></td>
+?>
+  <tr>
+  		<td style="text-align:center"><?= $comment['auteur'] ?></td>
+  		<td style="text-align:center"><?= $comment['contenu'] ?></td>
+  		<td style="text-align:center"><?= $comment['date'] ?></td>
+		<td style="text-align:center"><INPUT onclick="GatherIdsToValidate(<?= $comment['id'] ?>)" type="checkbox" name="choix1" value="1"></td>
+		<td style="text-align:center"><INPUT onclick="GatherIdsToDelete(<?= $comment['id'] ?>)" type="checkbox" name="choix1" value="1"></td>
 		
-	</tr>';
+	</tr>
+<?php
 }
 ?>
 
 <td></td><td></td><td></td>
-<td><p onclick="ValidateGroup('  <?= $id_article ?>   ')"><a class="btn btn-primary" >Valider</a></p></td>
-<td><p onclick="DeleteGroup('  <?= $id_article ?>   ')"><a class="btn btn-primary" >Supprimer</a></p></td>
+<td><p onclick="ValidateGroup(<?= $id_article ?>)"><a class="btn btn-primary" >Valider</a></p></td>
+<td><p onclick="DeleteGroup(<?= $id_article ?>)"><a class="btn btn-primary" >Supprimer</a></p></td>
 
 
 </tbody></table>
@@ -83,7 +84,7 @@ function DeleteGroup(idArticle) {
 	//alert(CommentsIdsToBeDeleted);
 	
 	if (confirm("êtes vous sûr de vouloir supprimer ces commentaires ?")) { 
-		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-delete-" + CommentsIdsToBeDeleted + "-" + idArticle.trim()  + ".html"; 
+		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-delete-" + CommentsIdsToBeDeleted + "-" + idArticle  + ".html"; 
 		//alert(redirect);
 		document.location.href=redirect; 	
 	}
@@ -125,9 +126,8 @@ function ValidateGroup(idArticle) {
 	CommentsIdsToBeValidated = CommentsIdsToBeValidated.substring(0,CommentsIdsToBeValidated.length-1)
 	CommentsIdsToBeValidated = CommentsIdsToBeValidated.concat(']');
 	
-	if (confirm("êtes vous sûr de vouloir valider ces commentaires ?")) { 
-		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-validate-" + CommentsIdsToBeValidated + "-" + idArticle.trim()  + ".html"; 
-		
+	if (confirm("êtes vous sûr de vouloir valider ces commentaires ?")) {
+		var redirect = "http://localhost/~alexei/FlyWithMeOC2/Web/admin/unvalidatedGroupcomment-validate-" + CommentsIdsToBeValidated + "-" + idArticle  + ".html"; 
 		document.location.href=redirect; 	
 	}
 }
@@ -138,19 +138,16 @@ var CommentsIdsToBeValidated_temp = [];
 
 
 function GatherIdsToValidate(idComment) {
-
-	//alert('GatherIdsToValidate : ' + idComment);
 	
 	if(!CommentsIdsToBeValidated_temp.includes(idComment)){ 
-		//alert('insérer le comment : ' + idComment);
 		CommentsIdsToBeValidated_temp.push(idComment);
 	}
 	else{
-		//alert('retirer le comment ' + idComment);
+		
 		var indeexOfComment = CommentsIdsToBeValidated_temp.indexOf(idComment);
 		CommentsIdsToBeValidated_temp.splice(indeexOfComment, 1);
 	}
-	//alert( CommentsIdsToBeValidated_temp );
+	
 }
 </script>
 
