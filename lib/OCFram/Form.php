@@ -44,7 +44,6 @@ class Form
     {
       if (!$field->isValid())
       {
-        //echo $field->name() . ' vaut ' . $field->value() . ' et n\'est pas valide <br>';
         $valid = false;
       }
     }
@@ -53,6 +52,7 @@ class Form
  
   public function entity()
   {
+    echo get_class($this->entity);
     return $this->entity;
   }
  

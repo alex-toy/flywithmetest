@@ -25,7 +25,7 @@ class PilotFormBuilder extends FormBuilder
         'name' => 'pilotname',
         'maxLength' => 20,
         'validators' => [
-          	new MaxLengthValidator('Le nom spécifié est trop long (100 caractères maximum)', 20),
+          	new MaxLengthValidator('Le nom spécifié est trop long (15 caractères maximum)', 15),
           	new NotNullValidator('Merci de spécifier un nom')
          ]
        ]);

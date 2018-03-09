@@ -19,7 +19,7 @@ class PilotController extends BackController
   
   public function executeConnect(HTTPRequest $request)
   {
-    $this->page->addVar('title', 'connection');
+    $this->page->addVar('title', 'connexion');
     
     
     $pilotManager = $this->managers->getManagerOf('Pilot');
@@ -32,42 +32,35 @@ class PilotController extends BackController
         'email' => "a@a.fr",
         'pwrd' => $request->postData('pwrd')
       ]);
-      
-      if( empty($pilot->pilotname()) && empty($pilot->email()) && empty($pilot->pwrd()) ){
-      		$this->app->user()->setFlash('un peu d\'inspiration !!');
-     }
-     	
     }
     else
     {
     	$pilot = new Pilot;
     }
     
+    
+    
     $formBuilder = new PilotConnectFormBuilder($pilot);
     $formBuilder->build();
     $form = $formBuilder->form();
+   
 	
+	$formHandler = new FormHandler($form, $pilotManager, $request);
+	if($formHandler->check()){
+		if($pilotManager->IsPilot($pilot)){
+			$_SESSION['name'] = $pilot->pilotname();
+			$_SESSION['connected'] = true;
+			$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
+		}
+		else if( !empty($pilot->pilotname()) && !empty($pilot->pwrd()) ){
+			$_SESSION['name'] = "";
+			$_SESSION['connected'] = false;
+			$this->app->user()->setFlash('Désolé, cet identifiant et mot de passe sont inconnus!!');
 	
-	if($pilotManager->IsPilot($pilot)){
-		$_SESSION['name'] = $pilot->pilotname();
-		$_SESSION['connected'] = true;
-		$this->app->httpResponse()->redirect('http://localhost/~alexei/FlyWithMeOC2/Web/articles');
-	}
-	else if( !empty($pilot->pilotname()) && !empty($pilot->pwrd()) ){
-	
-		$_SESSION['name'] = "";
-		$_SESSION['connected'] = false;
-		$this->app->user()->setFlash('Vous ne pouvez pas vous connecter!!');
-	
-	}
- 	
-    
+		}
+    }
  
     $this->page->addVar('form', $form->createView());
-    
-   
-    
-
     
   }
   

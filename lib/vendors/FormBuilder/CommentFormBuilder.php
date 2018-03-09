@@ -18,7 +18,7 @@ class CommentFormBuilder extends FormBuilder
         'rows' => 7,
         'cols' => 150,
         'validators' => [
-          new NotNullValidator('Merci de spécifier votre commentaire'),
+          new NotNullValidator('Merci de spécifier votre commentaire')
         ],
        ]));
   }

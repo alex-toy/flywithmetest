@@ -231,16 +231,16 @@ class ArticlesController extends BackController
   public function executeDeleteUnvalidatedGroupComment(HTTPRequest $request)
   {
     
-    $CommentsIdsToBeDeleted = $request->getData('CommentsIdsToBeDeleted');
-    $CommentsIdsToBeDeleted = substr($CommentsIdsToBeDeleted, 1, $CommentsIdsToBeDeleted.length - 1);
+    $CommentsIdsToDelete = $request->getData('CommentsIdsToBeDeleted');
+    $CommentsIdsToDelete = substr($CommentsIdsToDelete, 1, $CommentsIdsToDelete.length - 1);
 	
-	$CommentsIdsToBeDeletedArray = explode(",",$CommentsIdsToBeDeleted);
+	$ComIdsToDeleteArray = explode(",",$CommentsIdsToDelete);
     
     
     
     $id_article = $request->getData('id_article');
     
-    foreach ($CommentsIdsToBeDeletedArray as $CommentsId) {
+    foreach ($ComIdsToDeleteArray as $CommentsId) {
     	$this->managers->getManagerOf('Comments')->delete($CommentsId);
 	}
     
